@@ -1,0 +1,3700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Citadel — Your Dream College Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* VINTAGE palette — #CAE4DB (mint), #CDC7BE (warm gray), #87A7B3 (slate blue), #766161 (mauve) */
+  --bg:        #1c1f1e;
+  --bg2:       #242928;
+  --bg3:       #151817;
+  --surface:   #2a302e;
+  --surface2:  #323a38;
+  --border:    rgba(135,167,179,0.18);
+  --border-h:  rgba(135,167,179,0.40);
+  --text:      #e8f0ee;
+  --text-2:    #a8bab6;
+  --text-3:    #6a7a76;
+  --nav-bg:    rgba(28,31,30,0.88);
+  --nav-bg-s:  rgba(21,24,23,0.97);
+  --modal-bg:  rgba(5,8,7,0.88);
+  --grain-op:  0.22;
+
+  /* VINTAGE accent palette */
+  --amber:     #87a7b3;
+  --amber-d:   #6a8a98;
+  --amber-glow:rgba(135,167,179,0.22);
+  --copper:    #cae4db;
+  --copper-d:  #a8c8be;
+  --rust:      #766161;
+  --gold:      #cdc7be;
+  --gold-d:    #b0aaa0;
+  --cream:     #e8f0ee;
+  --violet:    #87a7b3;
+  --violet-d:  #6a8a98;
+  --teal:      #cae4db;
+  --green:     #87a7b3;
+  --sky:       #cdc7be;
+
+  --ff-head:   'Playfair Display', serif;
+  --ff-body:   'Space Grotesk', sans-serif;
+  --ff-mono:   'DM Mono', monospace;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-back:   cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============ LIGHT THEME — SOFT palette ============ */
+/* SOFT: #FFE194 (warm yellow), #FFB085 (peach), #90AACB (muted blue), #F77575 (coral) */
+[data-theme="light"] {
+  --bg:        #fff9f0;
+  --bg2:       #fff3e4;
+  --bg3:       #fdecd6;
+  --surface:   #ffffff;
+  --surface2:  #fff6ec;
+  --border:    rgba(247,117,117,0.15);
+  --border-h:  rgba(247,117,117,0.35);
+  --text:      #2a1a1a;
+  --text-2:    #7a4a3a;
+  --text-3:    #c09a88;
+  --nav-bg:    rgba(255,249,240,0.88);
+  --nav-bg-s:  rgba(255,249,240,0.97);
+  --modal-bg:  rgba(0,0,0,0.45);
+  --grain-op:  0.12;
+
+  /* SOFT accent overrides */
+  --amber:     #f77575;
+  --amber-d:   #e05555;
+  --amber-glow:rgba(247,117,117,0.20);
+  --copper:    #ffb085;
+  --copper-d:  #e8905a;
+  --rust:      #e05555;
+  --gold:      #ffe194;
+  --gold-d:    #f5cc60;
+  --cream:     #fff9f0;
+  --violet:    #90aacb;
+  --violet-d:  #6a8ab0;
+  --teal:      #7a9ab8;
+  --green:     #88b8a0;
+  --sky:       #90aacb;
+}
+[data-theme="light"] .hstat-n {
+  background: linear-gradient(135deg, #f77575, #ffb085);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .sc-tag { background: #fff3e4; border-color: rgba(247,117,117,0.15); }
+[data-theme="light"] body::after { opacity: 0.10; }
+[data-theme="light"] .step-num { color: rgba(247,117,117,0.06); }
+[data-theme="light"] .modal-box { background: var(--bg); box-shadow: 0 24px 80px rgba(247,117,117,0.12); }
+[data-theme="light"] .strat-box { background: linear-gradient(135deg, rgba(255,225,148,0.25), rgba(255,176,133,0.18)); border-color: rgba(247,117,117,0.20); }
+
+/* SOFT light: gradient buttons & accents */
+[data-theme="light"] .btn-filled {
+  background: linear-gradient(135deg, #f77575, #ffb085);
+  box-shadow: 0 4px 24px rgba(247,117,117,0.30);
+}
+[data-theme="light"] .btn-filled:hover { box-shadow: 0 8px 36px rgba(247,117,117,0.45); }
+[data-theme="light"] .btn-gold {
+  background: linear-gradient(135deg, #ffe194, #ffb085);
+  color: #2a1a1a;
+  box-shadow: 0 4px 24px rgba(255,225,148,0.30);
+}
+[data-theme="light"] .login-btn {
+  background: linear-gradient(135deg, #87a7b3, #cae4db);
+  box-shadow: 0 4px 24px rgba(135,167,179,0.30);
+}
+[data-theme="light"] .nav-cta {
+  background: linear-gradient(135deg, #f77575, #ffb085);
+}
+[data-theme="light"] .c-tab.active {
+  background: linear-gradient(135deg, #f77575, #ffb085);
+  box-shadow: 0 4px 20px rgba(247,117,117,0.25);
+}
+[data-theme="light"] .hero-eyebrow {
+  color: #f77575;
+  border-color: rgba(247,117,117,0.25);
+  background: rgba(247,117,117,0.06);
+}
+[data-theme="light"] .hero-eyebrow-dot { background: #f77575; }
+[data-theme="light"] .hero-h1 em { color: #f77575; text-shadow: 0 0 60px rgba(247,117,117,0.3); }
+[data-theme="light"] .hero-h1 .hl-v {
+  background: linear-gradient(135deg, #ffe194, #f77575);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .s-label { color: #f77575; }
+[data-theme="light"] .s-label::before { background: linear-gradient(90deg, #f77575, #ffb085); }
+[data-theme="light"] .sc-btn:hover { background: linear-gradient(135deg, #f77575, #ffb085); }
+[data-theme="light"] .nav-links a:hover { color: #f77575; }
+[data-theme="light"] .nav-counselling-btn:hover { border-color: #f77575; color: #f77575; background: rgba(247,117,117,0.06); }
+[data-theme="light"] .theme-toggle:hover { border-color: #f77575; }
+[data-theme="light"] .login-input:focus { border-color: #87a7b3; box-shadow: 0 0 0 3px rgba(135,167,179,0.12); }
+[data-theme="light"] .login-forgot:hover { color: #87a7b3; }
+[data-theme="light"] .login-footer-text a { color: #87a7b3; }
+[data-theme="light"] .detail-card:hover { border-color: rgba(247,117,117,0.35); }
+[data-theme="light"] .c-card:hover { border-color: rgba(247,117,117,0.30); }
+[data-theme="light"] .scroll-bar { background: linear-gradient(90deg, #f77575, #ffb085, #ffe194); }
+[data-theme="light"] .h-slide::after {
+  background: linear-gradient(to bottom, transparent, rgba(247,117,117,0.4) 30%, rgba(255,176,133,0.55) 50%, rgba(247,117,117,0.4) 70%, transparent);
+}
+[data-theme="light"] .sdot { background: rgba(247,117,117,0.25); border-color: rgba(247,117,117,0.35); }
+[data-theme="light"] .sdot.active { background: linear-gradient(90deg, #f77575, #ffb085); }
+[data-theme="light"] .d-title::before { background: linear-gradient(to bottom, #f77575, #ffb085); }
+[data-theme="light"] .hero-stats {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(247,117,117,0.18);
+  box-shadow: 0 8px 40px rgba(247,117,117,0.10);
+}
+/* SOFT section backgrounds */
+[data-theme="light"] #hero {
+  background:
+    radial-gradient(circle 500px at 80% 20%, rgba(255,225,148,0.35) 0%, transparent 70%),
+    radial-gradient(circle 400px at 10% 80%, rgba(144,170,203,0.25) 0%, transparent 70%),
+    radial-gradient(circle 350px at 90% 80%, rgba(255,176,133,0.25) 0%, transparent 70%),
+    linear-gradient(160deg, #fff9f0 0%, #fff3e4 60%, #fdecd6 100%);
+}
+[data-theme="light"] #streams {
+  background: linear-gradient(180deg, #fff3e4 0%, #fff9f0 100%);
+}
+[data-theme="light"] #steps {
+  background: linear-gradient(180deg, #fdecd6 0%, #fff3e4 100%);
+}
+[data-theme="light"] #pcm {
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 30%, rgba(247,117,117,0.10), transparent 65%),
+    linear-gradient(180deg, #fff9f0 0%, #fff3e4 100%);
+}
+[data-theme="light"] #pcb {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 60%, rgba(144,170,203,0.12), transparent 65%),
+    linear-gradient(180deg, #f5f8fc 0%, #eef3f8 100%);
+}
+[data-theme="light"] #commerce {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(255,225,148,0.18), transparent 65%),
+    linear-gradient(180deg, #fffdf0 0%, #fff9e0 100%);
+}
+[data-theme="light"] #humanities {
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 40%, rgba(144,170,203,0.15), transparent 65%),
+    linear-gradient(180deg, #f5f7fc 0%, #eef2f8 100%);
+}
+[data-theme="light"] #counselling {
+  background: linear-gradient(180deg, #fff3e4 0%, #fff9f0 100%);
+}
+[data-theme="light"] #exam-search {
+  background: linear-gradient(180deg, #fff3e4 0%, #fff9f0 100%);
+}
+[data-theme="light"] #ai-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(247,117,117,0.08), transparent 65%),
+    linear-gradient(180deg, #fff9f0 0%, #fff3e4 100%);
+}
+[data-theme="light"] #cta {
+  background: linear-gradient(180deg, #fff3e4 0%, #fdecd6 100%);
+}
+[data-theme="light"] footer {
+  background: linear-gradient(180deg, #fdecd6 0%, #fde0c8 100%);
+}
+[data-theme="light"] .stream-card { background: #ffffff !important; border-color: rgba(247,117,117,0.12) !important; }
+[data-theme="light"] .stream-card:hover { border-color: rgba(247,117,117,0.38) !important; box-shadow: 0 24px 60px rgba(247,117,117,0.12), 0 0 0 1px rgba(247,117,117,0.18) !important; }
+[data-theme="light"] .step-card { background: #ffffff; border-color: rgba(247,117,117,0.10); }
+[data-theme="light"] .step-card:hover { border-color: rgba(247,117,117,0.28); }
+[data-theme="light"] .detail-card { background: #ffffff; border-color: rgba(247,117,117,0.10); }
+[data-theme="light"] .c-card { background: #ffffff; border-color: rgba(247,117,117,0.10); }
+[data-theme="light"] .cta-box { background: #ffffff; border-color: rgba(247,117,117,0.22); box-shadow: 0 0 60px rgba(247,117,117,0.08); }
+[data-theme="light"] .ai-chat-box { background: #ffffff; border-color: rgba(247,117,117,0.14); }
+[data-theme="light"] .ai-chat-topbar, [data-theme="light"] .chat-input-row { background: #fff9f0; border-color: rgba(247,117,117,0.10); }
+[data-theme="light"] .chat-input { background: #fff9f0; border-color: rgba(247,117,117,0.14); }
+[data-theme="light"] .float-badge { background: rgba(255,255,255,0.90); border-color: rgba(247,117,117,0.25); box-shadow: 0 4px 20px rgba(247,117,117,0.10); }
+[data-theme="light"] .counselling-intro { background: linear-gradient(135deg, rgba(255,225,148,0.20), rgba(255,176,133,0.14)); border-color: rgba(247,117,117,0.20); }
+[data-theme="light"] .strat-label { color: #c05500; }
+[data-theme="light"] #login-page {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(135,167,179,0.20), transparent 65%),
+    radial-gradient(ellipse 70% 50% at 80% 70%, rgba(202,228,219,0.18), transparent 65%),
+    linear-gradient(160deg, #f4f8f7 0%, #e8f2ef 60%, #deecea 100%);
+}
+[data-theme="light"] .modal-box { background: #ffffff; border-color: rgba(135,167,179,0.20); }
+[data-theme="light"] .c-college-pill { background: #fff3e4; border-color: rgba(247,117,117,0.14); }
+[data-theme="light"] .c-college-pill:hover { background: rgba(247,117,117,0.06); border-color: rgba(247,117,117,0.30); }
+[data-theme="light"] .qp-btn { background: #fff3e4; border-color: rgba(247,117,117,0.14); }
+[data-theme="light"] .mobile-menu { background: rgba(255,249,240,0.97); }
+[data-theme="light"] nav { background: rgba(255,249,240,0.88); }
+[data-theme="light"] nav.scrolled { background: rgba(255,249,240,0.97); box-shadow: 0 4px 40px rgba(247,117,117,0.10), 0 1px 0 rgba(247,117,117,0.10); }
+[data-theme="light"] .sc-accent.sc-pcm { background: linear-gradient(90deg, #f77575, #ffb085); }
+[data-theme="light"] .bubble-ai { background: rgba(255,225,148,0.18); border-color: rgba(247,117,117,0.15); }
+[data-theme="light"] .h-arrow { background: rgba(255,249,240,0.85); border-color: rgba(247,117,117,0.25); }
+[data-theme="light"] .h-arrow:hover { border-color: #f77575; color: #f77575; }
+
+body, nav, section, .stream-card, .step-card, .detail-card,
+.c-card, .modal-box, .ai-chat-box, .chat-input, .bubble-ai,
+.surface, .surface2, footer, .cta-box, .strat-box,
+.c-colleges-grid, .c-college-pill, .qp-btn, .quick-prompts,
+.ai-chat-topbar, .chat-input-row, .counselling-intro,
+.float-badge, .nav-brand, .mobile-menu {
+  transition: background-color 0.4s var(--ease-out),
+              border-color 0.4s var(--ease-out),
+              color 0.3s var(--ease-out),
+              box-shadow 0.4s var(--ease-out);
+}
+
+/* body defined in brochure section below */
+
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity: var(--grain-op, 0.35);
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   SCROLL BAR
+   ============================================================ */
+.scroll-bar {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 10000;
+  background: linear-gradient(90deg, var(--copper), var(--amber), var(--gold));
+  transition: width 0.1s;
+  box-shadow: 0 0 8px var(--amber-glow);
+}
+
+/* ============================================================
+   PAGE TRANSITION
+   ============================================================ */
+#page-transition {
+  position: fixed; inset: 0; z-index: 99999;
+  pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+#page-transition .pt-layer {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+#page-transition .pt-logo {
+  position: relative; z-index: 1;
+  font-family: var(--ff-head); font-size: 2rem; font-weight: 800;
+  color: #fff; letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 0.8rem;
+  opacity: 0; transition: opacity 0.3s;
+}
+#page-transition .pt-logo-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+#page-transition.entering .pt-layer { transform: scaleY(1); transform-origin: bottom; }
+#page-transition.exiting  .pt-layer { transform: scaleY(0); transform-origin: top; transition: transform 0.5s 0.1s cubic-bezier(0.76, 0, 0.24, 1); }
+#page-transition.entering .pt-logo  { opacity: 1; transition: opacity 0.3s 0.3s; }
+#page-transition.exiting  .pt-logo  { opacity: 0; }
+
+/* ============================================================
+   LOGIN PAGE
+   ============================================================ */
+#login-page {
+  position: fixed; inset: 0; z-index: 9500;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+  padding: 1.5rem;
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+#login-page.hidden {
+  opacity: 0; transform: scale(1.02);
+  pointer-events: none;
+}
+
+.login-bg-blobs {
+  position: absolute; inset: 0; overflow: hidden; z-index: 0;
+}
+.login-blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none;
+}
+.lb1 { width:600px;height:600px; background:radial-gradient(circle,rgba(135,167,179,0.15),transparent 70%); top:-200px;left:-150px; animation:lbFloat 10s ease-in-out infinite; }
+.lb2 { width:500px;height:500px; background:radial-gradient(circle,rgba(202,228,219,0.10),transparent 70%); bottom:-100px;right:-80px; animation:lbFloat 12s ease-in-out infinite reverse; }
+.lb3 { width:350px;height:350px; background:radial-gradient(circle,rgba(205,199,190,0.08),transparent 70%); top:50%;left:50%;transform:translate(-50%,-50%); animation:lbFloat3 8s ease-in-out infinite; }
+@keyframes lbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,-30px)} }
+@keyframes lbFloat3 { 0%,100%{transform:translate(-50%,-50%)} 50%{transform:translate(calc(-50% - 20px),calc(-50% + 20px))} }
+
+/* Saturn ring decoration on login */
+.login-saturn-ring {
+  position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+  width: 400px; height: 400px; pointer-events: none;
+  opacity: 0.12;
+}
+@media (max-width: 800px) { .login-saturn-ring { display: none; } }
+
+.login-card {
+  position: relative; z-index: 1;
+  background: var(--surface);
+  border: 1px solid var(--border-h);
+  border-radius: 28px;
+  padding: 3rem 3rem 2.5rem;
+  width: 100%; max-width: 460px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 60px rgba(135,167,179,0.08);
+  animation: loginCardIn 0.7s 0.1s var(--ease-spring) both;
+}
+@keyframes loginCardIn {
+  from { opacity:0; transform:translateY(30px) scale(0.96); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes loginCardOut {
+  from { opacity:1; transform:translateY(0) scale(1); }
+  to   { opacity:0; transform:translateY(-20px) scale(0.97); }
+}
+
+/* Select styling for signup */
+.login-input option {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.login-brand {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.login-brand-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 24px var(--amber-glow);
+  animation: iconPulse 3s ease-in-out infinite;
+}
+@keyframes iconPulse { 0%,100%{box-shadow:0 0 24px var(--amber-glow)} 50%{box-shadow:0 0 40px rgba(135,167,179,0.4)} }
+
+.login-brand-name {
+  font-family: var(--ff-head); font-size: 1.4rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.02em;
+}
+
+.login-title {
+  font-family: var(--ff-head); font-size: 1.8rem; font-weight: 800;
+  color: var(--text); letter-spacing: -0.025em; margin-bottom: 0.4rem;
+}
+.login-sub {
+  color: var(--text-2); font-size: 0.9rem; margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.login-field { margin-bottom: 1.2rem; }
+.login-label {
+  display: block; font-family: var(--ff-mono); font-size: 0.65rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-2); margin-bottom: 0.5rem;
+}
+.login-input {
+  width: 100%; padding: 0.9rem 1.1rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 12px; font-family: var(--ff-body);
+  font-size: 0.92rem; color: var(--text);
+  transition: border-color 0.22s, box-shadow 0.22s, background 0.3s; outline: none;
+}
+.login-input::placeholder { color: var(--text-3); }
+.login-input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(135,167,179,0.15);
+  background: var(--surface);
+}
+.login-input.error { border-color: var(--copper); box-shadow: 0 0 0 3px rgba(202,228,219,0.12); }
+
+.pw-wrapper { position: relative; }
+.pw-toggle {
+  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  cursor: pointer; font-size: 1rem; opacity: 0.5; transition: opacity 0.2s;
+}
+.pw-toggle:hover { opacity: 1; }
+
+.login-forgot {
+  display: block; text-align: right; font-size: 0.8rem;
+  color: var(--text-2); margin-top: -0.8rem; margin-bottom: 1.5rem;
+  cursor: pointer; transition: color 0.2s;
+}
+.login-forgot:hover { color: var(--amber); }
+
+.login-btn {
+  width: 100%; padding: 1rem;
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  color: #fff; border: none; border-radius: 12px;
+  font-family: var(--ff-head); font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.28s var(--ease-spring);
+  box-shadow: 0 4px 24px rgba(135,167,179,0.35);
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+.login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(135,167,179,0.5); }
+.login-btn:active { transform: translateY(0); }
+.login-btn.loading { opacity: 0.7; pointer-events: none; }
+
+.login-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.2rem;
+  font-family: var(--ff-mono); font-size: 0.65rem;
+  color: var(--text-3); letter-spacing: 0.08em;
+}
+.login-divider::before, .login-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.login-guest-btn {
+  width: 100%; padding: 0.85rem;
+  background: transparent; color: var(--text-2);
+  border: 1px solid var(--border-h); border-radius: 12px;
+  font-family: var(--ff-head); font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.28s var(--ease-spring);
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.login-guest-btn:hover {
+  border-color: var(--amber); color: var(--amber);
+  background: rgba(135,167,179,0.06); transform: translateY(-1px);
+}
+
+.login-error {
+  font-family: var(--ff-mono); font-size: 0.72rem;
+  color: var(--copper); text-align: center;
+  margin-top: 0.8rem; min-height: 1.2em;
+  animation: shake 0.4s var(--ease-back);
+}
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)}
+}
+.login-input.shake { animation: shake 0.4s var(--ease-back); }
+
+.login-footer-text {
+  text-align: center; font-size: 0.82rem; color: var(--text-3); margin-top: 1.2rem;
+}
+.login-footer-text a { color: var(--amber); cursor: pointer; text-decoration: none; }
+.login-footer-text a:hover { text-decoration: underline; }
+
+/* ============================================================
+   DOODLE CANVAS
+   ============================================================ */
+#doodle-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; opacity: 0.6;
+}
+[data-theme="light"] #doodle-canvas { opacity: 0.25; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 64px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s var(--ease-out);
+}
+nav.scrolled {
+  background: var(--nav-bg-s);
+  border-bottom-color: var(--border);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.3);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--ff-head); font-size: 1.15rem; font-weight: 700;
+  color: var(--text); cursor: pointer; letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.nav-brand-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 0 16px var(--amber-glow);
+}
+.nav-links {
+  display: flex; list-style: none; gap: 0; margin-left: 2.5rem;
+}
+.nav-links a {
+  padding: 0.4rem 0.9rem; font-size: 0.84rem; font-weight: 500;
+  color: var(--text-2); cursor: pointer;
+  transition: color 0.2s; border-radius: 8px; letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--amber); }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 0.8rem; }
+
+.theme-toggle {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.25s var(--ease-spring);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.theme-toggle:hover { border-color: var(--amber); transform: rotate(20deg); }
+[data-theme="dark"] .sun { display: none; }
+[data-theme="light"] .moon { display: none; }
+
+.nav-counselling-btn {
+  padding: 0.45rem 1.1rem; background: transparent;
+  border: 1px solid var(--border-h); border-radius: 8px;
+  color: var(--text-2); font-family: var(--ff-body); font-size: 0.82rem; font-weight: 500;
+  cursor: pointer; transition: all 0.25s var(--ease-spring);
+}
+.nav-counselling-btn:hover { border-color: var(--amber); color: var(--amber); background: rgba(135,167,179,0.06); }
+
+.nav-cta {
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  border: none; border-radius: 8px;
+  color: #fff; font-family: var(--ff-body); font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 2px 16px rgba(135,167,179,0.3);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(135,167,179,0.45); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: all 0.3s var(--ease-out);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
+  background: var(--nav-bg-s); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  padding: 0; max-height: 0; overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), padding 0.3s;
+}
+.mobile-menu.open { max-height: 400px; padding: 1rem 0; }
+.mobile-menu a {
+  display: block; padding: 0.85rem 2rem;
+  color: var(--text-2); font-size: 0.9rem; font-weight: 500;
+  cursor: pointer; transition: color 0.2s, background 0.2s;
+}
+.mobile-menu a:hover { color: var(--amber); background: rgba(135,167,179,0.05); }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-counselling-btn { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 1.2rem; }
+  .nav-cta { display: none; }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 99000;
+  background: var(--surface); border: 1px solid var(--amber);
+  border-radius: 14px; padding: 0.9rem 1.4rem;
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.88rem; font-weight: 500; color: var(--text);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 20px var(--amber-glow);
+  animation: toastIn 0.4s var(--ease-spring) both;
+}
+.toast.out { animation: toastOut 0.35s var(--ease-out) forwards; }
+@keyframes toastIn { from{opacity:0;transform:translateY(16px) scale(0.9)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes toastOut { to{opacity:0;transform:translateY(8px) scale(0.95)} }
+
+/* ============================================================
+   BROCHURE ARCHITECTURE — animated section system
+   ============================================================ */
+
+/* Body gets a flowing ambient warm background */
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Ambient flowing body backdrop — slow-moving warm aurora */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 30%,  rgba(135,167,179,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 85% 70%,  rgba(202,228,219,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 50% 10%,  rgba(118,97,97,0.04) 0%, transparent 70%);
+  animation: ambientDrift 25s ease-in-out infinite alternate;
+}
+@keyframes ambientDrift {
+  0%   { transform: scale(1) translate(0, 0); }
+  33%  { transform: scale(1.04) translate(-15px, 10px); }
+  66%  { transform: scale(0.98) translate(10px, -8px); }
+  100% { transform: scale(1.02) translate(-5px, 15px); }
+}
+
+/* ── Animated SVG Saturn ring divider between sections ── */
+.saturn-divider {
+  position: relative; width: 100%; height: 80px; overflow: hidden;
+  pointer-events: none; z-index: 2;
+}
+.saturn-divider svg {
+  position: absolute; width: 100%; height: 100%;
+}
+.saturn-divider.flip { transform: scaleY(-1); }
+
+/* ── Section atmosphere rings — large decorative circles ── */
+.atm-ring {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  border: 1px solid rgba(135,167,179,0.06);
+  animation: ringBreath 12s ease-in-out infinite;
+}
+.atm-ring-2 { animation-delay: -4s; animation-duration: 16s; }
+.atm-ring-3 { animation-delay: -8s; animation-duration: 20s; }
+@keyframes ringBreath {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%       { transform: scale(1.06); opacity: 1.0; }
+}
+
+/* ── Parallax floating orbs ── */
+.orb {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(60px); mix-blend-mode: screen;
+  animation: orbFloat 14s ease-in-out infinite;
+}
+.orb-amber { background: radial-gradient(circle, rgba(135,167,179,0.22), transparent 70%); animation-duration: 14s; }
+.orb-copper { background: radial-gradient(circle, rgba(202,228,219,0.18), transparent 70%); animation-duration: 18s; animation-delay: -5s; }
+.orb-gold   { background: radial-gradient(circle, rgba(205,199,190,0.15), transparent 70%); animation-duration: 22s; animation-delay: -10s; }
+@keyframes orbFloat {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  25%     { transform: translate(20px, -30px) scale(1.05); }
+  50%     { transform: translate(-15px, 15px) scale(0.96); }
+  75%     { transform: translate(10px, -10px) scale(1.02); }
+}
+
+/* ── Section entrance wipe animation ── */
+@keyframes sectionWipeIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.brochure-section-inner {
+  animation: sectionWipeIn 0.9s var(--ease-out) both;
+}
+
+/* ── Stream cards — VINTAGE palette ── */
+[data-theme="dark"] .stream-card {
+  background: linear-gradient(145deg, rgba(42,48,46,0.95), rgba(34,42,40,0.90)) !important;
+  border-color: rgba(135,167,179,0.14) !important;
+}
+[data-theme="dark"] .stream-card:hover {
+  background: linear-gradient(145deg, rgba(52,60,58,0.98), rgba(44,52,50,0.95)) !important;
+  border-color: rgba(135,167,179,0.44) !important;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.7), 0 0 50px rgba(202,228,219,0.10), 0 0 0 1px rgba(135,167,179,0.22) !important;
+}
+
+/* ── Section backgrounds — VINTAGE palette ── */
+[data-theme="dark"] #hero {
+  background:
+    radial-gradient(circle 400px at 82% 18%, rgba(135,167,179,0.18) 0%, rgba(202,228,219,0.10) 40%, transparent 70%),
+    radial-gradient(ellipse 55% 65% at -5% 50%, rgba(202,228,219,0.12), transparent 70%),
+    radial-gradient(ellipse 50% 55% at 108% 90%, rgba(135,167,179,0.10), transparent 70%),
+    linear-gradient(160deg, #1c1f1e 0%, #151817 40%, #1a2020 100%);
+}
+[data-theme="dark"] #streams {
+  background:
+    radial-gradient(ellipse 70% 60% at 90% 50%, rgba(135,167,179,0.08), transparent 70%),
+    linear-gradient(180deg, #242928 0%, #1f2422 100%);
+}
+[data-theme="dark"] #steps {
+  background:
+    radial-gradient(ellipse 60% 70% at 10% 50%, rgba(202,228,219,0.08), transparent 70%),
+    linear-gradient(180deg, #151817 0%, #1c1f1e 100%);
+}
+[data-theme="dark"] #pcm {
+  background:
+    radial-gradient(ellipse 80% 50% at 95% 30%, rgba(135,167,179,0.10), transparent 65%),
+    linear-gradient(180deg, #1f2422 0%, #242928 100%);
+}
+[data-theme="dark"] #pcb {
+  background:
+    radial-gradient(ellipse 70% 60% at 5% 70%, rgba(202,228,219,0.08), transparent 65%),
+    linear-gradient(180deg, #151817 0%, #1c1f1e 100%);
+}
+[data-theme="dark"] #commerce {
+  background:
+    radial-gradient(ellipse 75% 55% at 90% 60%, rgba(135,167,179,0.08), transparent 65%),
+    linear-gradient(180deg, #1f2422 0%, #242928 100%);
+}
+[data-theme="dark"] #humanities {
+  background:
+    radial-gradient(ellipse 65% 60% at 15% 40%, rgba(202,228,219,0.08), transparent 65%),
+    linear-gradient(180deg, #151817 0%, #1c1f1e 100%);
+}
+[data-theme="dark"] #counselling {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(135,167,179,0.08), transparent 65%),
+    radial-gradient(ellipse 55% 60% at 20% 80%, rgba(202,228,219,0.06), transparent 65%),
+    linear-gradient(180deg, #1c1f1e 0%, #242928 100%);
+}
+[data-theme="dark"] #exam-search {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(135,167,179,0.06), transparent 65%),
+    linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+}
+[data-theme="dark"] #ai-section {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(202,228,219,0.10), transparent 65%),
+    radial-gradient(ellipse 50% 50% at 85% 80%, rgba(135,167,179,0.07), transparent 65%),
+    linear-gradient(180deg, #151817 0%, #1c1f1e 100%);
+}
+[data-theme="dark"] #cta {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 100%, rgba(135,167,179,0.12), transparent 65%),
+    linear-gradient(180deg, #1c1f1e 0%, #1f2422 100%);
+}
+[data-theme="dark"] footer {
+  background: linear-gradient(180deg, #151817 0%, #111413 100%);
+}
+
+/* ── Counselling cards ── */
+[data-theme="dark"] .c-card {
+  background: linear-gradient(145deg, rgba(42,48,46,0.90), rgba(34,42,40,0.85));
+  border-color: rgba(135,167,179,0.14);
+}
+[data-theme="dark"] .c-card:hover {
+  border-color: rgba(135,167,179,0.34);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 30px rgba(202,228,219,0.07);
+}
+
+/* ── Step cards ── */
+[data-theme="dark"] .step-card {
+  background: linear-gradient(145deg, rgba(42,48,46,0.85), rgba(34,42,40,0.80));
+}
+
+/* ── Detail cards ── */
+[data-theme="dark"] .detail-card {
+  background: linear-gradient(145deg, rgba(42,48,46,0.85), rgba(34,42,40,0.80));
+}
+
+/* ── Hero stats bar ── */
+[data-theme="dark"] .hero-stats {
+  background: rgba(34,42,40,0.85);
+  backdrop-filter: blur(16px);
+  border-color: rgba(135,167,179,0.20);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(202,228,219,0.06);
+}
+
+/* ── Saturn ring line (now vintage mint/slate) ── */
+.saturn-ring-line {
+  position: absolute; left: 0; right: 0;
+  height: 1px; pointer-events: none;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(135,167,179,0.0) 10%,
+    rgba(135,167,179,0.4) 30%,
+    rgba(202,228,219,0.6) 50%,
+    rgba(135,167,179,0.4) 70%,
+    rgba(135,167,179,0.0) 90%,
+    transparent 100%
+  );
+  animation: ringLineSweep 6s ease-in-out infinite;
+}
+@keyframes ringLineSweep {
+  0%,100% { opacity: 0.4; transform: scaleX(0.8); }
+  50%     { opacity: 1.0; transform: scaleX(1.0); }
+}
+
+/* ── Strat box ── */
+[data-theme="dark"] .strat-box {
+  background: linear-gradient(135deg, rgba(135,167,179,0.08), rgba(202,228,219,0.05));
+  border-color: rgba(135,167,179,0.22);
+}
+
+/* ── Modal ── */
+[data-theme="dark"] .modal-box {
+  background: linear-gradient(145deg, #242928, #1c1f1e);
+  border-color: rgba(135,167,179,0.25);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 60px rgba(202,228,219,0.08);
+}
+
+/* ── Login page ── */
+[data-theme="dark"] #login-page {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(202,228,219,0.10), transparent 65%),
+    radial-gradient(ellipse 70% 50% at 80% 70%, rgba(135,167,179,0.10), transparent 65%),
+    linear-gradient(160deg, #1c1f1e 0%, #151817 50%, #1a2020 100%);
+}
+
+/* ── AI chat box ── */
+[data-theme="dark"] .ai-chat-box {
+  background: linear-gradient(145deg, rgba(42,48,46,0.95), rgba(28,31,30,0.90));
+  border-color: rgba(135,167,179,0.16);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(202,228,219,0.06);
+}
+[data-theme="dark"] .ai-chat-topbar,
+[data-theme="dark"] .chat-input-row {
+  background: rgba(21,24,23,0.90);
+  border-color: rgba(135,167,179,0.10);
+}
+[data-theme="dark"] .chat-input {
+  background: rgba(28,31,30,0.80);
+  border-color: rgba(135,167,179,0.14);
+}
+
+/* ── CTA box ── */
+[data-theme="dark"] .cta-box {
+  background: linear-gradient(145deg, rgba(42,48,46,0.90), rgba(50,58,56,0.85));
+  border-color: rgba(135,167,179,0.25);
+  box-shadow: 0 0 80px rgba(202,228,219,0.06);
+}
+
+/* ── Float badges ── */
+[data-theme="dark"] .float-badge {
+  background: rgba(42,48,46,0.90);
+  border-color: rgba(135,167,179,0.28);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(202,228,219,0.06);
+}
+
+/* ── Nav ── */
+[data-theme="dark"] nav {
+  background: rgba(28,31,30,0.88);
+}
+[data-theme="dark"] nav.scrolled {
+  background: rgba(21,24,23,0.97);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.6), 0 1px 0 rgba(135,167,179,0.10);
+}
+
+/* ── Counselling intro box ── */
+[data-theme="dark"] .counselling-intro {
+  background: linear-gradient(135deg, rgba(135,167,179,0.09), rgba(202,228,219,0.06));
+  border-color: rgba(135,167,179,0.22);
+}
+
+/* ── sc-tag ── */
+[data-theme="dark"] .sc-tag {
+  background: rgba(21,24,23,0.70);
+  border-color: rgba(135,167,179,0.14);
+}
+
+/* ── College pills ── */
+[data-theme="dark"] .c-college-pill {
+  background: rgba(42,48,46,0.70);
+  border-color: rgba(135,167,179,0.12);
+}
+[data-theme="dark"] .c-college-pill:hover {
+  background: rgba(135,167,179,0.07);
+  border-color: rgba(135,167,179,0.30);
+}
+
+/* ── QP buttons ── */
+[data-theme="dark"] .qp-btn {
+  background: rgba(42,48,46,0.70);
+  border-color: rgba(135,167,179,0.14);
+}
+
+/* ── Mobile menu ── */
+[data-theme="dark"] .mobile-menu {
+  background: rgba(21,24,23,0.97);
+}
+
+/* ── Brochure section accent borders ── */
+section {
+  position: relative; z-index: 1;
+  padding: 6rem 2rem; min-height: auto;
+}
+/* Top accent line suppressed — h-slide::after handles vertical separators now */
+section::after {
+  display: none;
+}
+#hero::after { display: none; }
+
+/* ── Breathing hero planet orb ── */
+@keyframes planetPulse {
+  0%, 100% { box-shadow: 0 0 80px 20px rgba(135,167,179,0.08); }
+  50%       { box-shadow: 0 0 120px 40px rgba(202,228,219,0.14); }
+}
+
+
+#hero { padding-top: 130px; padding-bottom: 6rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+
+.section-content { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+.gspot {
+  position: absolute; border-radius: 50%;
+  filter: blur(70px); pointer-events: none; z-index: 0;
+}
+
+/* ============================================================
+   SATURN HERO BACKGROUND — dark mode only
+   ============================================================ */
+[data-theme="dark"] #hero {
+  background:
+    /* Vintage ring arc — top right */
+    radial-gradient(ellipse 150% 20% at 90% 20%,  rgba(202,228,219,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 130% 14% at 87% 23%,  rgba(135,167,179,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 110% 9%  at 84% 27%,  rgba(118,97,97,0.08)   0%, transparent 50%),
+    /* Vintage ring arc — bottom left */
+    radial-gradient(ellipse 140% 18% at 10% 80%,  rgba(202,228,219,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 12% at 13% 82%,  rgba(135,167,179,0.07) 0%, transparent 55%),
+    /* Planet glow — upper right */
+    radial-gradient(circle 380px at 84% 16%,      rgba(135,167,179,0.20) 0%, rgba(202,228,219,0.12) 35%, transparent 70%),
+    /* Slate nebula — left */
+    radial-gradient(ellipse 55% 65% at -5% 50%,   rgba(118,97,97,0.14)   0%, transparent 70%),
+    /* Mint haze — bottom right */
+    radial-gradient(ellipse 50% 55% at 108% 90%,  rgba(202,228,219,0.10) 0%, transparent 70%),
+    /* Warm gray core — centre */
+    radial-gradient(ellipse 70% 50% at 50% 60%,   rgba(205,199,190,0.05) 0%, transparent 70%),
+    /* Base: cool dark vintage space */
+    linear-gradient(160deg, #1c1f1e 0%, #151817 35%, #131615 65%, #1a1d1c 100%);
+}
+
+/* Subtle animated star-dust shimmer on hero in dark mode */
+[data-theme="dark"] #hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%,  rgba(202,228,219,0.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 10%,  rgba(255,255,255,0.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 65%,  rgba(255,255,255,0.20) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 55%,  rgba(135,167,179,0.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 80%,  rgba(255,255,255,0.18) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 30%, rgba(202,228,219,0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5%  45%,  rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 30%,  rgba(255,255,255,0.20) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 8%,   rgba(255,255,255,0.28) 0%, transparent 100%),
+    radial-gradient(1px 1px at 33% 42%,  rgba(118,97,97,0.28)   0%, transparent 100%);
+  opacity: 0.9;
+  animation: starTwinkle 8s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle {
+  0%   { opacity: 0.7; }
+  50%  { opacity: 1.0; }
+  100% { opacity: 0.75; }
+}
+
+/* ============================================================
+   FLOAT BADGES (hero)
+   ============================================================ */
+.float-badge {
+  position: absolute;
+  background: var(--surface); border: 1px solid var(--border-h);
+  padding: 0.5rem 1rem; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 600; color: var(--text-2);
+  font-family: var(--ff-mono);
+  animation: floatBadge 4s ease-in-out infinite;
+  z-index: 2; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.float-badge:nth-child(1) { top:22%;left:3%;animation-delay:0s; }
+.float-badge:nth-child(2) { top:38%;right:2%;animation-delay:0.8s; }
+.float-badge:nth-child(3) { bottom:30%;left:2%;animation-delay:1.6s; }
+.float-badge:nth-child(4) { bottom:18%;right:5%;animation-delay:2.4s; }
+@keyframes floatBadge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@media (max-width: 768px) { .float-badge { display: none; } }
+
+/* ============================================================
+   HERO CONTENT
+   ============================================================ */
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--ff-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--amber); margin-bottom: 1.5rem;
+  border: 1px solid rgba(135,167,179,0.25);
+  padding: 0.4rem 1.1rem; border-radius: 50px;
+  background: rgba(135,167,179,0.06);
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-h1 {
+  font-family: var(--ff-head); font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900; line-height: 1.0; color: var(--text);
+  letter-spacing: -0.035em; margin-bottom: 1.5rem;
+}
+.hero-h1 em {
+  font-style: italic; color: var(--amber);
+  text-shadow: 0 0 60px rgba(135,167,179,0.4);
+}
+.hero-h1 .hl-v {
+  background: linear-gradient(135deg, var(--gold), var(--copper));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.05rem; color: var(--text-2); line-height: 1.85;
+  max-width: 560px; margin: 0 auto 2.5rem;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-main {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; border-radius: 10px;
+  font-family: var(--ff-head); font-size: 0.92rem; font-weight: 700;
+  cursor: pointer; transition: all 0.28s var(--ease-spring);
+  border: 1px solid transparent; text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.btn-filled {
+  background: linear-gradient(135deg, var(--copper), var(--amber));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 24px rgba(135,167,179,0.35);
+}
+.btn-filled:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(135,167,179,0.5); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-d), var(--gold));
+  color: #1a1f1e; border-color: transparent;
+  box-shadow: 0 4px 24px rgba(202,228,219,0.25);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(202,228,219,0.4); }
+.btn-ghost {
+  background: transparent; color: var(--text-2);
+  border-color: var(--border-h);
+}
+.btn-ghost:hover { border-color: var(--amber); color: var(--amber); background: rgba(135,167,179,0.06); transform: translateY(-1px); }
+
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* ============================================================
+   HERO STATS
+   ============================================================ */
+.hero-stats {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  flex-wrap: wrap; gap: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 1.5rem 2.5rem;
+  max-width: 680px; margin: 0 auto 2.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.hstat { text-align: center; padding: 0 2rem; }
+.hstat-n {
+  font-family: var(--ff-head); font-size: 2.2rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.1; margin-bottom: 0.2rem;
+}
+.hstat-n span { font-size: 1.2rem; }
+.hstat-l { font-family: var(--ff-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); }
+.hstat-div { width: 1px; height: 36px; background: var(--border); margin: 0; }
+
+.scroll-cue {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-family: var(--ff-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  color: var(--text-3); text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--border-h), transparent);
+  animation: scrollDrop 2s ease-in-out infinite;
+}
+@keyframes scrollDrop { 0%,100%{opacity:0.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+/* ============================================================
+   SECTION LABELS
+   ============================================================ */
+.s-label { display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--ff-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--amber);margin-bottom:1rem; }
+.s-label::before { content:'';width:20px;height:2px;background:linear-gradient(90deg,var(--copper),var(--amber));border-radius:2px; }
+.s-h2 { font-family:var(--ff-head);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;color:var(--text);letter-spacing:-0.025em;margin-bottom:1rem; }
+.s-desc { color:var(--text-2);font-size:1rem;line-height:1.85;max-width:520px;margin-bottom:3rem; }
+
+/* ============ REVEAL ============ */
+.reveal { opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out); }
+.reveal.in { opacity:1;transform:translateY(0); }
+.reveal-d1{transition-delay:0.06s} .reveal-d2{transition-delay:0.14s} .reveal-d3{transition-delay:0.22s} .reveal-d4{transition-delay:0.30s}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out)}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out)}
+.reveal-right.in{opacity:1;transform:translateX(0)}
+@keyframes riseUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============================================================
+   VERTICAL SCROLL ARCHITECTURE (horizontal scroll removed)
+   ============================================================ */
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  width: 100%;
+}
+
+/* The track is now a normal vertical block */
+#h-track {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: none !important;
+  transition: none;
+}
+
+/* Each slide is a normal block */
+.h-slide {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Sections: full width, normal flow */
+section {
+  width: 100%;
+  min-height: auto;
+  position: relative;
+  z-index: 1;
+  padding: 6rem 2rem;
+}
+
+#hero {
+  padding-top: 130px;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Footer slide */
+.h-slide-footer {
+  display: block;
+}
+.h-slide-footer footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Restore saturn dividers as horizontal section separators */
+.saturn-divider {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Remove vertical right-edge separator pseudo-elements */
+.h-slide::after { display: none; }
+
+/* Scroll progress bar (top) — driven by page scroll */
+.scroll-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  z-index: 10000;
+  background: linear-gradient(90deg, #87a7b3, #cae4db, #cdc7be);
+  transition: width 0.15s, background 0.4s;
+  box-shadow: 0 0 8px var(--amber-glow);
+  pointer-events: none;
+}
+
+/* Hide slide-specific navigation UI (dots, label, arrows) */
+#slide-dots,
+#slide-label,
+.h-arrow { display: none !important; }
+
+/* Scroll-to-explore cue: vertical */
+.scroll-cue { flex-direction: column; gap: 0.5rem; }
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--border-h), transparent);
+  animation: scrollDrop 2s ease-in-out infinite;
+}
+@keyframes scrollDrop { 0%,100%{opacity:0.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+/* ============ REVEAL — intersection observer on scroll ============ */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-d1{transition-delay:0.06s} .reveal-d2{transition-delay:0.14s} .reveal-d3{transition-delay:0.22s} .reveal-d4{transition-delay:0.30s}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out)}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.7s var(--ease-out),transform 0.7s var(--ease-out)}
+.reveal-right.in{opacity:1;transform:translateX(0)}
+
+/* ============ SECTION ENTRANCE — fade in on scroll ============ */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+section.in-view { opacity: 1; transform: none; }
+#hero { opacity: 1; transform: none; }
+#exam-search { opacity: 1; transform: none; }
+#exam-search .reveal,
+#exam-search .reveal-d1,
+#exam-search .reveal-left,
+#exam-search .reveal-right { opacity: 1; transform: none; }
+#calendar-section { opacity: 1; transform: none; }
+#scholarship-search-section { opacity: 1; transform: none; }
+
+/* s-label clip animation — trigger on section in-view */
+section.in-view .s-label {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.8s 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#hero::before {
+  animation: starTwinkle 8s ease-in-out infinite alternate !important;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, rgba(202,228,219,0.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 10%, rgba(255,255,255,0.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 65%, rgba(255,255,255,0.20) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 55%, rgba(135,167,179,0.40) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 80%, rgba(255,255,255,0.18) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 30%, rgba(202,228,219,0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 45%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 30%, rgba(255,255,255,0.20) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 8%, rgba(255,255,255,0.28) 0%, transparent 100%),
+    radial-gradient(1px 1px at 33% 42%, rgba(118,97,97,0.28) 0%, transparent 100%) !important;
+}
+
+/* s-label: always visible in vertical scroll mode */
+.s-label { clip-path: inset(0 0% 0 0); }
+
+/* Hero cinematic entrance animations */
+.hero-eyebrow { opacity:0; transform:translateY(12px); animation: heroEyebrowIn 0.7s 0.3s var(--ease-out) forwards; }
+@keyframes heroEyebrowIn { to { opacity:1; transform:translateY(0); } }
+.hero-h1      { opacity:0; transform:translateY(30px); animation: heroH1In 0.9s 0.5s var(--ease-out) forwards; }
+@keyframes heroH1In { to { opacity:1; transform:translateY(0); } }
+.hero-sub     { opacity:0; transform:translateY(20px); animation: heroSubIn 0.8s 0.75s var(--ease-out) forwards; }
+@keyframes heroSubIn { to { opacity:1; transform:translateY(0); } }
+.hero-btns    { opacity:0; transform:translateY(16px); animation: heroSubIn 0.7s 0.95s var(--ease-out) forwards; }
+.hero-stats   { opacity:0; transform:translateY(14px) scale(0.97); animation: heroStatsIn 0.7s 1.1s var(--ease-out) forwards; }
+@keyframes heroStatsIn { to { opacity:1; transform:translateY(0) scale(1); } }
+.scroll-cue   { opacity:0; animation: heroSubIn 0.6s 1.4s var(--ease-out) forwards; }
+.float-badge  { opacity:0; }
+.float-badge:nth-child(1) { animation: floatBadgeIn 0.6s 1.2s var(--ease-out) forwards; }
+.float-badge:nth-child(2) { animation: floatBadgeIn 0.6s 1.4s var(--ease-out) forwards; }
+.float-badge:nth-child(3) { animation: floatBadgeIn 0.6s 1.6s var(--ease-out) forwards; }
+.float-badge:nth-child(4) { animation: floatBadgeIn 0.6s 1.8s var(--ease-out) forwards; }
+@keyframes floatBadgeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+nav { transform:translateY(-100%); animation: navDropIn 0.7s 0.15s var(--ease-out) forwards; }
+@keyframes navDropIn { to { transform:translateY(0); } }
+
+/* Mobile: already vertical, just tweak spacing */
+@media (max-width: 768px) {
+  section { min-height: auto; }
+  .scroll-bar { display: block; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  #h-track { transition: none; }
+  section { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-eyebrow, .hero-h1, .hero-sub, .hero-btns, .hero-stats, .scroll-cue,
+  .float-badge, nav, .s-label { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
+}
+
+/* ============ STREAM CARDS ============ */
+#streams { background: var(--bg2); }
+.stream-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem;margin-top:2.5rem; }
+.stream-card { background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:2.2rem;cursor:pointer;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.4s var(--ease-spring),box-shadow 0.3s,background-color 0.4s,color 0.3s;opacity:0;transform:translateY(24px); }
+.stream-card.in{animation:cardIn 0.55s var(--ease-out) forwards}
+.stream-card:nth-child(1){animation-delay:0.05s} .stream-card:nth-child(2){animation-delay:0.12s} .stream-card:nth-child(3){animation-delay:0.19s} .stream-card:nth-child(4){animation-delay:0.26s}
+@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+.stream-card::before { content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(135,167,179,0.05),transparent);transition:left 0.6s var(--ease-out); }
+.stream-card:hover::before{left:140%}
+.stream-card:hover { border-color:rgba(135,167,179,0.4);transform:translateY(-10px) scale(1.015);box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(135,167,179,0.18),0 0 40px rgba(135,167,179,0.08); }
+.sc-accent { position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity 0.3s;border-radius:3px 3px 0 0; }
+.stream-card:hover .sc-accent{opacity:1}
+.sc-pcm{background:linear-gradient(90deg,var(--copper),var(--amber))} .sc-pcb{background:linear-gradient(90deg,var(--green),var(--teal))} .sc-comm{background:linear-gradient(90deg,var(--gold),var(--amber))} .sc-hum{background:linear-gradient(90deg,var(--violet),var(--copper))}
+.sc-emoji{font-size:3rem;margin-bottom:1rem;display:block;transition:transform 0.4s var(--ease-spring)}
+.stream-card:hover .sc-emoji{transform:scale(1.2) rotate(-8deg)}
+.sc-title{font-family:var(--ff-head);font-size:1.55rem;font-weight:800;color:var(--text);margin-bottom:0.25rem;letter-spacing:-0.02em}
+.sc-sub{color:var(--text-2);font-size:0.86rem;margin-bottom:1rem;font-weight:600}
+.sc-tagline{font-size:0.84rem;color:var(--text-2);line-height:1.65;margin-bottom:1.8rem}
+.sc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.6rem}
+.sc-tag{font-family:var(--ff-mono);font-size:0.6rem;color:var(--text-2);background:var(--bg);border:1px solid var(--border);padding:0.22rem 0.55rem;border-radius:5px;letter-spacing:0.04em}
+.sc-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.7rem 1.4rem;border:1px solid var(--border-h);background:transparent;color:var(--text);border-radius:10px;font-family:var(--ff-head);font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.28s var(--ease-spring)}
+.sc-btn:hover{background:linear-gradient(135deg,var(--copper),var(--amber));border-color:transparent;color:#fff;transform:translateX(4px)}
+.sc-arrow{transition:transform 0.28s}
+.sc-btn:hover .sc-arrow{transform:translateX(5px)}
+
+/* ============ STEPS ============ */
+#steps{background:var(--bg3)}
+.steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem;margin-top:2.5rem;counter-reset:steps}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;counter-increment:steps;transition:border-color 0.3s,transform 0.4s var(--ease-spring),box-shadow 0.3s,background-color 0.4s;cursor:default}
+.step-card:hover{border-color:var(--border-h);transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,0.4)}
+.step-num{font-family:var(--ff-head);font-size:4rem;font-weight:800;color:rgba(135,167,179,0.05);position:absolute;top:0.8rem;right:1rem;line-height:1;pointer-events:none}
+.step-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem}
+.si-pink{background:rgba(135,167,179,0.12)} .si-vio{background:rgba(135,167,179,0.12)} .si-gold{background:rgba(202,228,219,0.12)} .si-green{background:rgba(202,228,219,0.12)}
+.step-h{font-family:var(--ff-head);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.6rem}
+.step-p{font-size:0.85rem;color:var(--text-2);line-height:1.75}
+
+/* ============ DETAIL SECTIONS ============ */
+.d-section{margin:3.5rem 0 0}
+.d-title{font-family:var(--ff-head);font-size:0.95rem;font-weight:700;color:var(--text-2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.4rem;display:flex;align-items:center;gap:0.6rem}
+.d-title::before{content:'';width:3px;height:16px;border-radius:3px;background:linear-gradient(to bottom,var(--copper),var(--amber))}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:border-color 0.25s,transform 0.35s var(--ease-spring),box-shadow 0.25s,background-color 0.4s;cursor:pointer;position:relative;overflow:hidden}
+.detail-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(135,167,179,0.05),transparent);opacity:0;transition:opacity 0.3s}
+.detail-card:hover::before{opacity:1}
+.detail-card:hover{border-color:rgba(135,167,179,0.35);transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.35)}
+.card-emoji{font-size:1.9rem;margin-bottom:0.75rem;display:block}
+.card-title{font-family:var(--ff-head);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.35rem}
+.card-desc{font-size:0.81rem;color:var(--text-2);line-height:1.7}
+.strat-box{background:linear-gradient(135deg,rgba(135,167,179,0.06),rgba(135,167,179,0.06));border:1px solid rgba(135,167,179,0.18);border-radius:16px;padding:1.8rem;margin-top:1.5rem}
+.strat-label{font-family:var(--ff-mono);font-size:0.65rem;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.6rem}
+.strat-text{font-size:0.92rem;color:var(--text);line-height:1.85}
+
+/* ============ COUNSELLING ============ */
+#counselling{background:var(--bg2)}
+.counselling-intro{background:linear-gradient(135deg,rgba(135,167,179,0.08),rgba(135,167,179,0.06));border:1px solid rgba(135,167,179,0.2);border-radius:20px;padding:2rem 2.5rem;margin-bottom:3rem;position:relative;overflow:hidden}
+.counselling-intro::before{content:'';position:absolute;top:-50%;right:-10%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(135,167,179,0.08),transparent 70%);pointer-events:none}
+.counselling-tabs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.c-tab{padding:0.65rem 1.5rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--text-2);font-family:var(--ff-head);font-size:0.84rem;font-weight:700;cursor:pointer;transition:all 0.25s var(--ease-spring);white-space:nowrap}
+.c-tab:hover{border-color:var(--border-h);color:var(--text)}
+.c-tab.active{background:linear-gradient(135deg,var(--copper),var(--amber));border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(135,167,179,0.3)}
+.counselling-panel{display:none}
+.counselling-panel.active{display:block;animation:panelIn 0.4s var(--ease-out) both}
+@keyframes panelIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.c-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:0;margin-bottom:1.5rem;overflow:hidden;cursor:pointer;transition:border-color 0.3s,box-shadow 0.3s,transform 0.3s var(--ease-spring),background-color 0.4s}
+.c-card:hover{border-color:rgba(135,167,179,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.3);transform:translateY(-3px)}
+.c-card-header{display:flex;align-items:center;gap:1.2rem;padding:1.8rem 2rem;cursor:pointer;transition:background 0.2s}
+.c-card-header:hover{background:rgba(135,167,179,0.02)}
+.c-card-icon{width:54px;height:54px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.c-card-meta{flex:1}
+.c-card-name{font-family:var(--ff-head);font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:0.2rem}
+.c-card-subtitle{font-size:0.84rem;color:var(--text-2)}
+.c-card-badges{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem}
+.c-badge{font-family:var(--ff-mono);font-size:0.6rem;padding:0.2rem 0.55rem;border-radius:4px;border:1px solid;letter-spacing:0.04em}
+.badge-national{color:var(--gold);border-color:rgba(202,228,219,0.3);background:rgba(202,228,219,0.08)}
+.badge-state{color:var(--sky);border-color:rgba(64,128,192,0.3);background:rgba(64,128,192,0.08)}
+.badge-private{color:var(--green);border-color:rgba(135,167,179,0.3);background:rgba(135,167,179,0.08)}
+.c-card-arrow{color:var(--text-2);font-size:1.1rem;transition:transform 0.3s var(--ease-spring),color 0.2s;flex-shrink:0}
+.c-card.open .c-card-arrow{transform:rotate(90deg);color:var(--amber)}
+.c-card-body{max-height:0;overflow:hidden;transition:max-height 0.5s var(--ease-out),opacity 0.4s;opacity:0;padding:0 2rem}
+.c-card.open .c-card-body{max-height:2000px;opacity:1;padding:0 2rem 2rem}
+.c-exam-tag{font-family:var(--ff-mono);font-size:0.72rem;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem;margin-top:0.5rem}
+.c-colleges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.6rem;margin-bottom:1.5rem}
+.c-college-pill{padding:0.55rem 0.9rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;font-size:0.8rem;color:var(--text-2);font-weight:500;transition:all 0.2s;cursor:default}
+.c-college-pill:hover{border-color:var(--border-h);color:var(--text);background:rgba(135,167,179,0.04)}
+.c-timeline{position:relative;margin:1.5rem 0}
+.c-timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--copper),var(--amber),transparent)}
+.c-tl-item{display:flex;gap:1.5rem;margin-bottom:1.2rem;padding-left:0;position:relative}
+.c-tl-dot{width:44px;height:44px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;font-family:var(--ff-mono);border:2px solid;position:relative;z-index:1}
+.tl-pink{background:rgba(135,167,179,0.12);border-color:rgba(118,97,97,0.4);color:var(--copper)}
+.tl-vio{background:rgba(135,167,179,0.12);border-color:rgba(135,167,179,0.4);color:var(--violet)}
+.tl-gold{background:rgba(202,228,219,0.12);border-color:rgba(202,228,219,0.4);color:var(--gold)}
+.tl-green{background:rgba(202,228,219,0.12);border-color:rgba(135,167,179,0.4);color:var(--green)}
+.tl-sky{background:rgba(64,128,192,0.12);border-color:rgba(64,128,192,0.4);color:var(--sky)}
+.tl-orange{background:rgba(135,167,179,0.12);border-color:rgba(118,97,97,0.4);color:var(--amber)}
+.c-tl-content{flex:1;padding-top:0.5rem}
+.c-tl-month{font-family:var(--ff-mono);font-size:0.65rem;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem}
+.c-tl-stage{font-family:var(--ff-head);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
+.c-tl-desc{font-size:0.82rem;color:var(--text-2);line-height:1.65}
+.c-divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+
+/* ============ AI SECTION ============ */
+.ai-wrap{width:100%;max-width:820px;margin:0 auto;position:relative;z-index:2}
+.ai-header{text-align:center;margin-bottom:2.5rem}
+.ai-badge{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--green);background:rgba(135,167,179,0.1);border:1px solid rgba(135,167,179,0.25);padding:0.38rem 1rem;border-radius:50px;margin-bottom:1.2rem;text-transform:uppercase}
+.ai-badge-pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+.ai-title{font-family:var(--ff-head);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:var(--text);letter-spacing:-0.025em;margin-bottom:0.8rem}
+.ai-title em{font-style:italic;color:var(--amber)}
+.ai-sub{font-size:1rem;color:var(--text-2);line-height:1.8}
+.ai-chat-box{background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 40px rgba(135,167,179,0.05)}
+.ai-chat-topbar{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.7rem;background:var(--surface2)}
+.topbar-dots{display:flex;gap:6px}
+.topbar-dot{width:10px;height:10px;border-radius:50%}
+.topbar-dot:nth-child(1){background:#ff5f57} .topbar-dot:nth-child(2){background:#febc2e} .topbar-dot:nth-child(3){background:#28c840}
+.topbar-label{font-family:var(--ff-mono);font-size:0.72rem;color:var(--text-2);letter-spacing:0.06em;margin-left:auto}
+.quick-prompts{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+.qp-btn{padding:0.45rem 1rem;border-radius:50px;border:1px solid var(--border);background:var(--surface2);color:var(--text-2);font-family:var(--ff-body);font-size:0.78rem;cursor:pointer;transition:all 0.22s var(--ease-spring);font-weight:500;white-space:nowrap}
+.qp-btn:hover{border-color:var(--amber);color:var(--amber);background:rgba(135,167,179,0.08);transform:translateY(-1px)}
+.chat-window{height:380px;overflow-y:auto;padding:1.5rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.chat-window::-webkit-scrollbar{width:4px}
+.chat-window::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.msg{display:flex;gap:0.85rem;margin-bottom:1.2rem;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.msg-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--ff-mono);font-size:0.65rem;font-weight:500;letter-spacing:0.04em}
+.av-ai{background:linear-gradient(135deg,var(--violet),var(--teal));color:#fff}
+.av-me{background:linear-gradient(135deg,var(--copper),var(--amber-d));color:#fff}
+.msg-bubble{max-width:75%;padding:0.9rem 1.1rem;border-radius:16px;font-size:0.88rem;line-height:1.75;animation:bubbleIn 0.3s var(--ease-spring) both}
+@keyframes bubbleIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+.bubble-ai{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:4px 16px 16px 16px}
+.bubble-me{background:linear-gradient(135deg,var(--copper),var(--amber-d));color:#fff;border-radius:16px 4px 16px 16px}
+.typing-dots{display:flex;gap:4px;align-items:center;padding:0.2rem 0}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--text-2);animation:typeDot 1.3s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:0.18s} .typing-dots span:nth-child(3){animation-delay:0.36s}
+@keyframes typeDot{0%,60%,100%{opacity:.3;transform:scale(.8)}30%{opacity:1;transform:scale(1)}}
+.chat-input-row{display:flex;gap:0.7rem;padding:1rem 1.5rem;border-top:1px solid var(--border);background:var(--surface2)}
+.chat-input{flex:1;padding:0.9rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-family:var(--ff-body);font-size:0.9rem;color:var(--text);transition:border-color 0.22s,box-shadow 0.22s,background 0.3s;outline:none}
+.chat-input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(135,167,179,0.12)}
+.chat-input::placeholder{color:var(--text-3)}
+.chat-send{padding:0.9rem 1.5rem;background:linear-gradient(135deg,var(--copper),var(--amber));border:none;border-radius:12px;color:#fff;font-family:var(--ff-head);font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.25s var(--ease-spring);box-shadow:0 0 24px rgba(135,167,179,0.3);display:flex;align-items:center;gap:0.5rem;white-space:nowrap}
+.chat-send:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(135,167,179,0.5)}
+.chat-send:disabled{opacity:.45;transform:none;cursor:not-allowed;box-shadow:none}
+.chat-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:0.7rem;color:var(--text-2)}
+.chat-ph-icon{font-size:2.5rem;opacity:0.5} .chat-ph-text{font-size:0.9rem;font-weight:600} .chat-ph-sub{font-size:0.8rem;opacity:0.6}
+.cursor-blink{animation:blink 1s step-end infinite}
+
+/* ============ MODAL ============ */
+.modal-wrap{position:fixed;inset:0;z-index:9000;background:var(--modal-bg);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-wrap.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg2);border:1px solid var(--border-h);border-radius:24px;max-width:720px;width:100%;max-height:88vh;overflow-y:auto;position:relative;padding:2.5rem;transform:translateY(20px) scale(0.97);transition:transform 0.35s var(--ease-spring),background-color 0.4s;scrollbar-width:thin}
+.modal-wrap.open .modal-box{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-2);font-size:1.1rem;cursor:pointer;transition:all 0.22s var(--ease-spring);display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:var(--copper);color:#fff;border-color:var(--copper);transform:rotate(90deg)}
+.modal-tag{display:inline-block;font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);background:rgba(135,167,179,0.1);border:1px solid rgba(135,167,179,0.22);padding:0.3rem 0.8rem;border-radius:50px;margin-bottom:1rem}
+.modal-h{font-family:var(--ff-head);font-size:2rem;font-weight:800;color:var(--text);margin-bottom:0.5rem}
+.modal-sub{color:var(--text-2);font-size:0.95rem;line-height:1.8;margin-bottom:0}
+
+/* ============ CTA ============ */
+#cta{background:var(--bg3);text-align:center;min-height:0;padding:5rem 2rem}
+.cta-box{background:var(--surface);border:1px solid var(--border-h);border-radius:28px;padding:4.5rem 2rem;max-width:720px;margin:0 auto;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(135,167,179,0.1),transparent 70%);pointer-events:none}
+.cta-h{font-family:var(--ff-head);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:var(--text);margin-bottom:1rem;letter-spacing:-0.025em}
+.cta-p{color:var(--text-2);font-size:1rem;line-height:1.85;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 3rem 2rem; text-align: center;
+}
+.footer-links {
+  display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.85rem; color: var(--text-2); cursor: pointer; padding: 0.3rem 0.7rem;
+  border-radius: 6px; transition: color 0.2s, background 0.2s; text-decoration: none;
+}
+.footer-links a:hover { color: var(--amber); background: rgba(135,167,179,0.06); }
+footer p { font-size: 0.82rem; color: var(--text-3); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  section { padding: 4rem 1.2rem; }
+  #hero { padding-top: 100px; }
+  .hero-stats { padding: 1.2rem 1rem; gap: 0; }
+  .hstat { padding: 0 1rem; }
+  .hstat-div { display: none; }
+
+}
+
+
+/* ===== CALENDAR STYLES ===== */
+.calendar-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.calendar-title {
+    font-family: var(--ff-head);
+    font-size: 1.8rem;
+    color: var(--text);
+}
+.calendar-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+.cal-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--ff-body);
+    font-size: 0.9rem;
+}
+.cal-btn:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+}
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.cal-day-header {
+    text-align: center;
+    font-weight: 600;
+    padding: 0.8rem 0;
+    color: var(--text-2);
+    font-size: 0.9rem;
+}
+.cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    background: var(--bg3);
+}
+.cal-day:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-h);
+}
+.cal-day.other-month {
+    color: var(--text-3);
+    opacity: 0.5;
+}
+.cal-day.eligible {
+    background: rgba(95, 199, 101, 0.2);
+    border-color: #5fc765;
+    color: #5fc765;
+    font-weight: 600;
+}
+.cal-day.applied {
+    background: rgba(74, 144, 226, 0.2);
+    border-color: #4a90e2;
+    color: #4a90e2;
+    font-weight: 600;
+}
+.cal-day.appeared {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--text);
+    color: var(--text);
+    font-weight: 600;
+}
+.cal-legend {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.legend-dot.eligible {
+    background: #5fc765;
+}
+.legend-dot.applied {
+    background: #4a90e2;
+}
+.legend-dot.appeared {
+    background: var(--text);
+}
+
+/* ===== EXAM SECTION ===== */
+.exam-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+.exam-title {
+    font-family: var(--ff-head);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+.search-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.search-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--ff-body);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+.search-input:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(135, 167, 179, 0.1);
+}
+.filter-select {
+    padding: 0.75rem 1rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--ff-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter-select:focus {
+    outline: none;
+    border-color: var(--amber);
+}
+.filter-select:hover {
+    border-color: var(--border-h);
+}
+.exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.exam-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.exam-card:hover {
+    border-color: var(--border-h);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(135, 167, 179, 0.12);
+}
+.exam-badge {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+}
+.exam-badge.national {
+    background: rgba(202, 228, 219, 0.2);
+    color: var(--copper);
+}
+.exam-badge.state {
+    background: rgba(135, 167, 179, 0.2);
+    color: var(--amber);
+}
+.exam-badge.university {
+    background: rgba(205, 199, 190, 0.2);
+    color: var(--gold);
+}
+.exam-name {
+    font-family: var(--ff-head);
+    font-size: 1.3rem;
+    color: var(--text);
+    margin: 0.5rem 0;
+}
+.exam-details {
+    font-size: 0.85rem;
+    color: var(--text-2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.exam-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--amber);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+.exam-link:hover {
+    color: var(--copper);
+    transform: translateX(2px);
+}
+
+/* ===== SCHOLARSHIP SECTION ===== */
+.scholarship-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+.scholarship-title {
+    font-family: var(--ff-head);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+.scholarship-search {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.scholarship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.scholarship-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.scholarship-card:hover {
+    border-color: var(--border-h);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(135, 167, 179, 0.12);
+}
+.scholarship-badge {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+    background: rgba(95, 199, 101, 0.2);
+    color: #5fc765;
+}
+.scholarship-name {
+    font-family: var(--ff-head);
+    font-size: 1.3rem;
+    color: var(--text);
+}
+.scholarship-details {
+    font-size: 0.85rem;
+    color: var(--text-2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.scholarship-amount {
+    font-weight: 600;
+    color: #5fc765;
+    font-size: 1rem;
+}
+.scholarship-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #5fc765;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+.scholarship-link:hover {
+    color: var(--copper);
+    transform: translateX(2px);
+}
+
+/* ===== NOTIFICATION STYLES ===== */
+.notification-center {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 10000;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.notification {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideInNotif 0.4s var(--ease-out);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+.notification::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--amber);
+}
+.notification.success::before {
+    background: #5fc765;
+}
+.notification.warning::before {
+    background: var(--gold);
+}
+.notification.info::before {
+    background: #4a90e2;
+}
+.notification-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+.notification-content {
+    flex: 1;
+}
+.notification-title {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+.notification-message {
+    font-size: 0.85rem;
+    color: var(--text-2);
+}
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    margin-left: 0.5rem;
+}
+.notification-close:hover {
+    color: var(--text);
+}
+@keyframes slideInNotif {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-container,
+    .exam-section,
+    .scholarship-section {
+        padding: 1rem;
+    }
+    .calendar-grid {
+        gap: 0.3rem;
+    }
+    .cal-day {
+        font-size: 0.8rem;
+    }
+    .exam-grid,
+    .scholarship-grid {
+        grid-template-columns: 1fr;
+    }
+    .search-bar,
+    .scholarship-search {
+        flex-direction: column;
+    }
+    .search-input,
+    .filter-select {
+        width: 100%;
+    }
+    .cal-legend {
+        gap: 1rem;
+    }
+    .notification-center {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE TRANSITION -->
+<div id="page-transition">
+  <div class="pt-layer"></div>
+  <div class="pt-logo">
+    <div class="pt-logo-icon">🏰</div>
+    The Citadel
+  </div>
+</div>
+
+<!-- LOGIN PAGE -->
+<div id="login-page">
+  <div class="login-bg-blobs">
+    <div class="login-blob lb1"></div>
+    <div class="login-blob lb2"></div>
+    <div class="login-blob lb3"></div>
+  </div>
+
+  <!-- LOGIN CARD -->
+  <div class="login-card" id="login-card">
+    <div class="login-brand">
+      <div class="login-brand-icon">🏰</div>
+      <span class="login-brand-name">The Citadel</span>
+    </div>
+
+    <h2 class="login-title">Welcome back</h2>
+    <p class="login-sub">Your dream college roadmap awaits. Sign in to continue your journey.</p>
+
+    <div class="login-field">
+      <label class="login-label" for="login-email">Email Address</label>
+      <input class="login-input" id="login-email" type="email" placeholder="you@example.com" autocomplete="email" />
+    </div>
+
+    <div class="login-field">
+      <label class="login-label" for="login-password">Password</label>
+      <div class="pw-wrapper">
+        <input class="login-input" id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password"
+          onkeydown="if(event.key==='Enter')doLogin()" />
+        <span class="pw-toggle" id="pw-toggle" onclick="togglePw()">👁</span>
+      </div>
+    </div>
+
+    <span class="login-forgot" onclick="showToast('Password reset link sent to your email!','📧')">Forgot password?</span>
+
+    <button class="login-btn" id="login-btn" onclick="doLogin()">
+      <span id="login-btn-text">Sign In →</span>
+    </button>
+
+    <div class="login-divider">or</div>
+
+    <button class="login-guest-btn" onclick="enterAsGuest()">
+      👤 Continue as Guest
+    </button>
+
+    <div class="login-error" id="login-error"></div>
+
+    <p class="login-footer-text">
+      Don't have an account? <a onclick="showSignup()">Create one →</a>
+    </p>
+  </div>
+
+  <!-- SIGNUP CARD -->
+  <div class="login-card" id="signup-card" style="display:none;">
+    <div class="login-brand">
+      <div class="login-brand-icon">🏰</div>
+      <span class="login-brand-name">The Citadel</span>
+    </div>
+
+    <h2 class="login-title">Create account</h2>
+    <p class="login-sub">Join thousands of students mapping their college journey.</p>
+
+    <div class="login-field">
+      <label class="login-label" for="signup-name">Full Name</label>
+      <input class="login-input" id="signup-name" type="text" placeholder="Your full name" autocomplete="name" />
+    </div>
+
+    <div class="login-field">
+      <label class="login-label" for="signup-email">Email Address</label>
+      <input class="login-input" id="signup-email" type="email" placeholder="you@example.com" autocomplete="email" />
+    </div>
+
+    <div class="login-field">
+      <label class="login-label" for="signup-password">Password</label>
+      <div class="pw-wrapper">
+        <input class="login-input" id="signup-password" type="password" placeholder="Create a password" autocomplete="new-password"
+          onkeydown="if(event.key==='Enter')doSignup()" />
+        <span class="pw-toggle" id="signup-pw-toggle" onclick="toggleSignupPw()">👁</span>
+      </div>
+    </div>
+
+    <div class="login-field">
+      <label class="login-label" for="signup-stream">Your Stream</label>
+      <select class="login-input" id="signup-stream" style="cursor:pointer;">
+        <option value="">— Select your stream —</option>
+        <option value="PCM">PCM — Science Non-Medical</option>
+        <option value="PCB">PCB — Science Medical</option>
+        <option value="Commerce">Commerce — Business &amp; Finance</option>
+        <option value="Humanities">Humanities — Arts &amp; Social Sciences</option>
+      </select>
+    </div>
+
+    <button class="login-btn" id="signup-btn" onclick="doSignup()">
+      <span id="signup-btn-text">Create Account →</span>
+    </button>
+
+    <div class="login-divider">or</div>
+
+    <button class="login-guest-btn" onclick="enterAsGuest()">
+      👤 Continue as Guest
+    </button>
+
+    <div class="login-error" id="signup-error"></div>
+
+    <p class="login-footer-text">
+      Already have an account? <a onclick="showLogin()">Sign in →</a>
+    </p>
+  </div>
+</div>
+
+<!-- DOODLE CANVAS -->
+<canvas id="doodle-canvas"></canvas>
+
+<!-- SCROLL BAR -->
+<div class="scroll-bar" id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-brand" onclick="scrollToSection('hero')">
+    <div class="nav-brand-icon">🏰</div>
+    The Citadel
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="scrollToSection('streams')">Streams</a></li>
+    <li><a onclick="scrollToSection('steps')">How It Works</a></li>
+    <li><a onclick="scrollToSection('counselling')">Counselling</a></li>
+    <li><a onclick="scrollToSection('exam-search')">Exam Search</a></li>
+    <li><a onclick="scrollToSection('scholarship-search-section')">Scholarships</a></li>
+    <li><a onclick="scrollToSection('calendar-section')">Exam Calendar</a></li>
+    <li><a onclick="scrollToSection('ai-section')">AI Guide</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
+    <button class="nav-counselling-btn" onclick="scrollToSection('counselling')">🗺️ Counselling Guide</button>
+    <button class="nav-cta" onclick="scrollToSection('ai-section')">Chat with AI →</button>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="scrollToSection('streams');toggleMobileMenu()">📚 Streams</a>
+  <a onclick="scrollToSection('steps');toggleMobileMenu()">⚙️ How It Works</a>
+  <a onclick="scrollToSection('counselling');toggleMobileMenu()">🗺️ Counselling Guide</a>
+  <a onclick="scrollToSection('exam-search');toggleMobileMenu()">🔍 Exam Search</a>
+  <a onclick="scrollToSection('scholarship-search-section');toggleMobileMenu()">🏆 Scholarships</a>
+  <a onclick="scrollToSection('calendar-section');toggleMobileMenu()">📅 Exam Calendar</a>
+  <a onclick="scrollToSection('ai-section');toggleMobileMenu()">🤖 AI Counsellor</a>
+</div>
+
+<!-- Slide nav UI (fixed position, outside track) -->
+<div id="slide-dots"></div>
+<div id="slide-label"></div>
+<button class="h-arrow hidden" id="h-arrow-left" title="Previous section">‹</button>
+<button class="h-arrow" id="h-arrow-right" title="Next section">›</button>
+
+<!-- HORIZONTAL TRACK -->
+<div id="h-track">
+
+<!-- SLIDE: HERO -->
+<div class="h-slide" data-section="hero">
+<section id="hero">
+  <div class="gspot" style="width:900px;height:900px;background:radial-gradient(circle,rgba(135,167,179,0.11),rgba(202,228,219,0.06) 50%,transparent 70%);top:-350px;left:-250px;"></div>
+  <div class="gspot" style="width:700px;height:700px;background:radial-gradient(circle,rgba(135,167,179,0.10),rgba(135,167,179,0.05) 55%,transparent 70%);bottom:-200px;right:-200px;"></div>
+  <div class="gspot" style="width:500px;height:500px;background:radial-gradient(circle,rgba(202,228,219,0.07),transparent 70%);top:55%;left:50%;transform:translate(-50%,-50%);"></div>
+  <!-- Brochure atmosphere rings -->
+  <div class="atm-ring" style="width:600px;height:600px;top:50%;left:75%;transform:translate(-50%,-50%);"></div>
+  <div class="atm-ring atm-ring-2" style="width:900px;height:900px;top:50%;left:75%;transform:translate(-50%,-50%);border-color:rgba(135,167,179,0.04);"></div>
+  <div class="orb orb-amber" style="width:400px;height:400px;top:5%;right:5%;opacity:0.7;"></div>
+  <div class="orb orb-copper" style="width:300px;height:300px;bottom:10%;left:5%;opacity:0.5;"></div>
+  <div class="float-badge">⚡ JEE Main → IITs / NITs</div>
+  <div class="float-badge">🩺 NEET → AIIMS / MBBS</div>
+  <div class="float-badge">⚖️ CLAT → Top NLUs</div>
+  <div class="float-badge">📊 IPMAT → IIM Indore</div>
+  <div class="section-content" style="text-align:center;">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>India's Sharpest Class 12 Counsellor</div>
+    <h1 class="hero-h1">Your Stream.<br><em>Your Future.</em><br><span class="hl-v">Your Plan.</span></h1>
+    <p class="hero-sub">The Citadel is an agentic AI-powered platform that helps students discover the right career paths beyond traditional exams like JEE and NEET. It provides structured guidance on exams, counselling processes, and next steps through a personalized, story-driven experience. By combining decision intelligence with an AI counselor, it transforms confusion into clear, actionable direction.
+</p>
+    <div class="hero-btns">
+      <button class="btn-main btn-filled" onclick="scrollToSection('streams')">🚀 Explore Streams</button>
+      <button class="btn-main btn-gold" onclick="scrollToSection('counselling')">🗺️ Counselling Guide</button>
+      <button class="btn-main btn-ghost" onclick="scrollToSection('ai-section')">Chat with AI →</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n" data-target="50">0<span>K+</span></div><div class="hstat-l">Students Guided</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n" data-target="200">0<span>+</span></div><div class="hstat-l">Exams Covered</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Streams Mapped</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n">24<span>/7</span></div><div class="hstat-l">AI Available</div></div>
+    </div>
+    <div class="scroll-cue">Scroll to explore<div class="scroll-line"></div></div>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)" />
+        <stop offset="20%"  stop-color="rgba(135,167,179,0.3)" />
+        <stop offset="50%"  stop-color="rgba(202,228,219,0.5)">
+          <animate attributeName="stop-color" values="rgba(202,228,219,0.5);rgba(135,167,179,0.5);rgba(202,228,219,0.5)" dur="4s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="80%"  stop-color="rgba(135,167,179,0.3)" />
+        <stop offset="100%" stop-color="rgba(135,167,179,0)" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="700" ry="8" fill="none" stroke="url(#ringGrad1)" stroke-width="1" opacity="0.8">
+      <animateTransform attributeName="transform" type="scale" values="1 1;1.02 1.1;1 1" dur="6s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <ellipse cx="720" cy="40" rx="500" ry="5" fill="none" stroke="rgba(135,167,179,0.2)" stroke-width="1" opacity="0.6">
+      <animateTransform attributeName="transform" type="scale" values="1 1;0.98 0.9;1 1" dur="8s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <line x1="0" y1="40" x2="1440" y2="40" stroke="rgba(135,167,179,0.08)" stroke-width="1"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: STREAMS -->
+<div class="h-slide" data-section="streams">
+<section id="streams">
+  <div class="orb orb-copper" style="width:350px;height:350px;top:-50px;right:-80px;opacity:0.4;filter:blur(80px);"></div>
+  <div class="orb orb-gold" style="width:280px;height:280px;bottom:-40px;left:-60px;opacity:0.35;filter:blur(70px);"></div>
+  <div class="section-content">
+    <div class="s-label">Your Path Starts Here</div>
+    <h2 class="s-h2 reveal">Choose Your Stream</h2>
+    <p class="s-desc reveal reveal-d1">Each stream opens different doors. Explore all exams, careers, and counselling portals for your path.</p>
+    <div class="stream-grid" id="streams-grid"></div>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider flip" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)" />
+        <stop offset="25%"  stop-color="rgba(135,167,179,0.25)" />
+        <stop offset="50%"  stop-color="rgba(135,167,179,0.45)">
+          <animate attributeName="stop-color" values="rgba(135,167,179,0.45);rgba(202,228,219,0.45);rgba(135,167,179,0.45)" dur="5s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="75%"  stop-color="rgba(135,167,179,0.25)" />
+        <stop offset="100%" stop-color="rgba(135,167,179,0)" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="680" ry="10" fill="none" stroke="url(#ringGrad2)" stroke-width="1.5" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" values="0 720 40;1 720 40;0 720 40" dur="10s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <line x1="0" y1="40" x2="1440" y2="40" stroke="rgba(135,167,179,0.06)" stroke-width="1"/>
+  </svg>
+</div>
+
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: HOW IT WORKS -->
+<div class="h-slide" data-section="steps">
+<section id="steps">
+  <div class="orb orb-gold" style="width:320px;height:320px;top:-30px;left:-60px;opacity:0.4;filter:blur(80px);"></div>
+  <div class="section-content">
+    <div class="s-label">Process</div>
+    <h2 class="s-h2 reveal">How It Works</h2>
+    <p class="s-desc reveal reveal-d1">Four steps from confusion to clarity. No fluff, no generic advice — just your exact roadmap.</p>
+    <div class="steps-row">
+      <div class="step-card reveal reveal-d1"><div class="step-num">01</div><div class="step-icon si-pink">📚</div><div class="step-h">Pick Your Stream</div><div class="step-p">Click your stream card. PCM, PCB, Commerce, or Humanities — instantly see every exam and career path open to you.</div></div>
+      <div class="step-card reveal reveal-d2"><div class="step-num">02</div><div class="step-icon si-vio">🔍</div><div class="step-h">Explore Domains</div><div class="step-p">See all career domains, the exact exams to crack, and which colleges they lead to — laid out clearly without jargon.</div></div>
+      <div class="step-card reveal reveal-d3"><div class="step-num">03</div><div class="step-icon si-gold">🗺️</div><div class="step-h">Master Counselling</div><div class="step-p">Detailed state & national counselling timelines. Know exactly when to apply, which rounds matter, and which colleges are unlocked.</div></div>
+      <div class="step-card reveal reveal-d4"><div class="step-num">04</div><div class="step-icon si-green">🤖</div><div class="step-h">Chat & Decide</div><div class="step-p">Ask our AI counsellor anything. Get personal, no-fluff advice on which exam to prioritize and which college fits you.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(202,228,219,0)"/>
+        <stop offset="30%"  stop-color="rgba(202,228,219,0.35)">
+          <animate attributeName="stop-color" values="rgba(202,228,219,0.35);rgba(118,97,97,0.35);rgba(202,228,219,0.35)" dur="7s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="50%"  stop-color="rgba(135,167,179,0.55)"/>
+        <stop offset="70%"  stop-color="rgba(202,228,219,0.35)"/>
+        <stop offset="100%" stop-color="rgba(202,228,219,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="720" ry="12" fill="none" stroke="url(#ringGrad3)" stroke-width="1" opacity="0.75">
+      <animateTransform attributeName="transform" type="scale" values="1 1;1.01 1.15;1 1" dur="7s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <ellipse cx="720" cy="40" rx="400" ry="6" fill="none" stroke="rgba(135,167,179,0.15)" stroke-width="1"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: PCM -->
+<div class="h-slide" data-section="pcm">
+<section id="pcm">
+  <div class="orb orb-copper" style="width:350px;height:350px;top:20%;right:-80px;opacity:0.45;filter:blur(80px);"></div>
+  <div class="section-content">
+    <div class="s-label">Stream 01 · Science Non-Medical</div>
+    <h2 class="s-h2 reveal">PCM ⚙️</h2>
+    <p class="s-desc reveal reveal-d1">Maximum scope, hardest path. JEE is the gateway — but not the only door.</p>
+    <div class="d-section">
+      <div class="d-title">Key Exams</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="askAI('PCM','JEE Main')"><span class="card-emoji">⚡</span><div class="card-title">JEE Main</div><div class="card-desc">Gateway to NITs, IIITs, GFTIs. 2 attempts/year. Highest competition in India.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="askAI('PCM','JEE Advanced')"><span class="card-emoji">🏆</span><div class="card-title">JEE Advanced</div><div class="card-desc">IITs only. Top 2.5L qualify. Most prestigious engineering exam in India.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('PCM','BITSAT')"><span class="card-emoji">🎯</span><div class="card-title">BITSAT</div><div class="card-desc">BITS Pilani, Goa, Hyderabad. Online. Faster, predictable results.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('PCM','IISER IAT')"><span class="card-emoji">🔬</span><div class="card-title">IISER IAT</div><div class="card-desc">Research path. BSc-MS dual degree. Monthly stipend available.</div></div>
+      </div>
+      <div class="strat-box reveal"><div class="strat-label">⚡ Smart Strategy</div><div class="strat-text">Apply JEE → JoSAA, JAC Delhi, IPU all together. Add BITSAT early. Keep IISER as research backup. Never bet on one exam!</div></div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">Career Paths</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="askAI('PCM','Engineering and Tech career path')"><span class="card-emoji">💻</span><div class="card-title">Engineering/Tech</div><div class="card-desc">JEE Main · JEE Adv · BITSAT · VITEEE</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="askAI('PCM','Pure Science research career')"><span class="card-emoji">🔬</span><div class="card-title">Pure Science</div><div class="card-desc">IISER IAT · NEST · ISI · CMI</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('PCM','Data Science Economics career')"><span class="card-emoji">📊</span><div class="card-title">Data Science/Econ</div><div class="card-desc">CUET UG · IPMAT · ISI</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('PCM','Defense NDA career')"><span class="card-emoji">🪖</span><div class="card-title">Defense/NDA</div><div class="card-desc">NDA · TES (via JEE Main)</div></div>
+      </div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">Counselling Portals</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="scrollToSection('counselling');setTimeout(()=>openCounsellingCard('josaa'),600)"><span class="card-emoji">🌍</span><div class="card-title">JoSAA</div><div class="card-desc">IITs, NITs, IIITs. 6+ rounds. Choice filling is everything.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="scrollToSection('counselling');setTimeout(()=>openCounsellingCard('jac'),600)"><span class="card-emoji">🏙️</span><div class="card-title">JAC Delhi</div><div class="card-desc">DTU, NSUT, IIIT Delhi. 85% seats for Delhi students.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="scrollToSection('counselling');setTimeout(()=>openCounsellingCard('ipu'),600)"><span class="card-emoji">🏢</span><div class="card-title">IPU Counselling</div><div class="card-desc">USICT, MAIT, MSIT. More seats, easier CS entry.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('PCM','BITS Pilani BITSAT counselling process')"><span class="card-emoji">⚡</span><div class="card-title">BITS Pilani</div><div class="card-desc">BITSAT score. Own portal. Earlier than JEE counselling.</div></div>
+      </div>
+    </div>
+    <button class="btn-main btn-filled" style="margin-top:2rem;" onclick="showModal('PCM')">📚 Full PCM Guide →</button>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider flip" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradPCB" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)"/>
+        <stop offset="35%"  stop-color="rgba(135,167,179,0.28)"/>
+        <stop offset="55%"  stop-color="rgba(40,160,100,0.45)">
+          <animate attributeName="stop-color" values="rgba(40,160,100,0.45);rgba(135,167,179,0.45);rgba(40,160,100,0.45)" dur="8s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="75%"  stop-color="rgba(135,167,179,0.28)"/>
+        <stop offset="100%" stop-color="rgba(135,167,179,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="680" ry="9" fill="none" stroke="url(#ringGradPCB)" stroke-width="1.2" opacity="0.7"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: PCB -->
+<div class="h-slide" data-section="pcb">
+<section id="pcb">
+  <div class="orb orb-gold" style="width:300px;height:300px;top:10%;left:-60px;opacity:0.35;filter:blur(80px);mix-blend-mode:screen;"></div>
+  <div class="section-content">
+    <div class="s-label">Stream 02 · Science Medical</div>
+    <h2 class="s-h2 reveal">PCB 🧬</h2>
+    <p class="s-desc reveal reveal-d1">Focused path. NEET is primary — but smart students always keep backups ready.</p>
+    <div class="d-section">
+      <div class="d-title">Key Exams</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="askAI('PCB','NEET UG strategy')"><span class="card-emoji">🩺</span><div class="card-title">NEET UG</div><div class="card-desc">MBBS, BDS, BAMS. 720 marks. One attempt per year. Extremely competitive.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="askAI('PCB','IISER IAT for biology')"><span class="card-emoji">🔬</span><div class="card-title">IISER IAT</div><div class="card-desc">Research alternative. Excellent stipend. BS-MS in life sciences.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('PCB','CUET UG backup for PCB')"><span class="card-emoji">📋</span><div class="card-title">CUET UG</div><div class="card-desc">DU, BHU, JNU — Psychology, Bio, Biotech. Essential backup.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('PCB','ICAR AIEEA agriculture exam')"><span class="card-emoji">🌾</span><div class="card-title">ICAR AIEEA</div><div class="card-desc">Agriculture, Forestry, Food Tech. High-value career path.</div></div>
+      </div>
+      <div class="strat-box reveal"><div class="strat-label">⚡ Smart Strategy</div><div class="strat-text">Primary: NEET. Backup: CUET UG + IISER IAT. Register CUET before NEET results. AIQ (MCC) + State counselling run separately — apply to both!</div></div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">Counselling Systems</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="scrollToSection('counselling');setTab('medical');setTimeout(()=>openCounsellingCard('mcc'),600)"><span class="card-emoji">🏛️</span><div class="card-title">MCC (AIQ)</div><div class="card-desc">15% all-India quota + AIIMS + Deemed. Rounds: R1, R2, Mop-up.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="scrollToSection('counselling');setTab('medical')"><span class="card-emoji">🗺️</span><div class="card-title">State Counselling</div><div class="card-desc">85% state quota. Run separately. Apply to each eligible state.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('PCB','DU BHU JNU CUET portal process')"><span class="card-emoji">🎓</span><div class="card-title">CUET Portals</div><div class="card-desc">No central system — DU, BHU, JNU each have own portals.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('PCB','IISER NISER research admission')"><span class="card-emoji">🔬</span><div class="card-title">IISER / NISER</div><div class="card-desc">Separate merit-based admission for research institutes.</div></div>
+      </div>
+    </div>
+    <button class="btn-main btn-filled" style="margin-top:2rem;" onclick="showModal('PCB')">📚 Full PCB Guide →</button>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradComm" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(202,228,219,0)"/>
+        <stop offset="25%"  stop-color="rgba(202,228,219,0.30)"/>
+        <stop offset="50%"  stop-color="rgba(202,228,219,0.50)">
+          <animate attributeName="stop-color" values="rgba(202,228,219,0.50);rgba(118,97,97,0.50);rgba(202,228,219,0.50)" dur="6s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="75%"  stop-color="rgba(202,228,219,0.30)"/>
+        <stop offset="100%" stop-color="rgba(202,228,219,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="720" ry="11" fill="none" stroke="url(#ringGradComm)" stroke-width="1" opacity="0.75"/>
+    <ellipse cx="720" cy="40" rx="480" ry="5" fill="none" stroke="rgba(202,228,219,0.12)" stroke-width="1"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: COMMERCE -->
+<div class="h-slide" data-section="commerce">
+<section id="commerce">
+  <div class="orb orb-amber" style="width:360px;height:360px;top:20%;right:-80px;opacity:0.4;filter:blur(80px);mix-blend-mode:screen;"></div>
+  <div class="section-content">
+    <div class="s-label">Stream 03 · Business & Finance</div>
+    <h2 class="s-h2 reveal">Commerce 📊</h2>
+    <p class="s-desc reveal reveal-d1">Most underrated stream. Highest ROI. Multi-application is the entire strategy.</p>
+    <div class="d-section">
+      <div class="d-title">Key Exams</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="askAI('Commerce','IPMAT for IIM Indore Rohtak')"><span class="card-emoji">🏛️</span><div class="card-title">IPMAT</div><div class="card-desc">IIM Indore/Rohtak. 5-year integrated MBA. Very competitive, limited seats.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="askAI('Commerce','CA Foundation path')"><span class="card-emoji">💰</span><div class="card-title">CA Foundation</div><div class="card-desc">Chartered Accountancy. Start anytime after 12th. No entrance needed.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('Commerce','CUET UG for Commerce')"><span class="card-emoji">📋</span><div class="card-title">CUET UG</div><div class="card-desc">DU (SRCC, Hindu), BHU, JNU. BCom Hons, Economics, BBA.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('Commerce','CLAT law career commerce')"><span class="card-emoji">⚖️</span><div class="card-title">CLAT</div><div class="card-desc">24 NLUs. 5-year integrated law. Corporate law = very high ROI.</div></div>
+      </div>
+      <div class="strat-box reveal"><div class="strat-label">⚡ Smart Strategy</div><div class="strat-text">Apply: CUET + IPMAT + CA Foundation + 2-3 private colleges — simultaneously. Unlike PCM there's no single portal. Track all separately and never miss a deadline.</div></div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">Counselling Systems</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="scrollToSection('counselling');setTab('commerce')"><span class="card-emoji">🎓</span><div class="card-title">CUET / DU CSAS</div><div class="card-desc">BCom, Economics, BBA. Delhi University central portal.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="scrollToSection('counselling');setTab('law')"><span class="card-emoji">⚖️</span><div class="card-title">CLAT Counselling</div><div class="card-desc">Centralized for all 24 NLUs. Very competitive, high ROI.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('Commerce','IPMAT IIM counselling process')"><span class="card-emoji">🏛️</span><div class="card-title">IPMAT Counselling</div><div class="card-desc">IIM Indore/Rohtak separate portals. 5-year MBA pathway.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('Commerce','private college management admission')"><span class="card-emoji">🏢</span><div class="card-title">Private Colleges</div><div class="card-desc">Symbiosis, Christ, NMIMS — own portals & tests.</div></div>
+      </div>
+    </div>
+    <button class="btn-main btn-filled" style="margin-top:2rem;" onclick="showModal('Commerce')">📚 Full Commerce Guide →</button>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider flip" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradHum" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)"/>
+        <stop offset="30%"  stop-color="rgba(135,167,179,0.28)"/>
+        <stop offset="50%"  stop-color="rgba(135,167,179,0.45)">
+          <animate attributeName="stop-color" values="rgba(135,167,179,0.45);rgba(118,97,97,0.45);rgba(135,167,179,0.45)" dur="9s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="70%"  stop-color="rgba(135,167,179,0.28)"/>
+        <stop offset="100%" stop-color="rgba(135,167,179,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="660" ry="10" fill="none" stroke="url(#ringGradHum)" stroke-width="1.2" opacity="0.7"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: HUMANITIES -->
+<div class="h-slide" data-section="humanities">
+<section id="humanities">
+  <div class="orb orb-copper" style="width:280px;height:280px;bottom:15%;left:-50px;opacity:0.4;filter:blur(75px);mix-blend-mode:screen;"></div>
+  <div class="section-content">
+    <div class="s-label">Stream 04 · Arts & Social Sciences</div>
+    <h2 class="s-h2 reveal">Humanities 📚</h2>
+    <p class="s-desc reveal reveal-d1">Most flexible, most misunderstood. Strategy-driven, not exam-driven. Profile matters here.</p>
+    <div class="d-section">
+      <div class="d-title">Key Exams</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="askAI('Humanities','CLAT for NLUs strategy')"><span class="card-emoji">⚖️</span><div class="card-title">CLAT</div><div class="card-desc">24 NLUs. ₹20L+ packages at top firms. Centralized counselling.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="askAI('Humanities','CUET UG for Humanities')"><span class="card-emoji">🎓</span><div class="card-title">CUET UG</div><div class="card-desc">200+ universities. Psychology, History, Political Science, Sociology.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="askAI('Humanities','IIMC journalism admission')"><span class="card-emoji">📡</span><div class="card-title">IIMC</div><div class="card-desc">Premier journalism institute. Very competitive, high industry value.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('Humanities','NID DAT NIFT design admission')"><span class="card-emoji">🎨</span><div class="card-title">NID DAT / NIFT</div><div class="card-desc">Design. Portfolio + test. Centralized counselling.</div></div>
+      </div>
+      <div class="strat-box reveal"><div class="strat-label">⚡ Smart Strategy</div><div class="strat-text">Apply: CUET (DU + BHU + others) + CLAT + IPU + 2-3 private universities. For Ashoka/FLAME/Krea: extracurriculars + writing + interviews matter more than marks. Build your profile now.</div></div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">Counselling Systems</div>
+      <div class="cards-grid">
+        <div class="detail-card reveal reveal-d1" onclick="scrollToSection('counselling');setTab('law')"><span class="card-emoji">⚖️</span><div class="card-title">CLAT Counselling</div><div class="card-desc">Centralized for all NLUs. Must apply to all 24 simultaneously.</div></div>
+        <div class="detail-card reveal reveal-d2" onclick="scrollToSection('counselling');setTab('commerce')"><span class="card-emoji">🎓</span><div class="card-title">DU CSAS Portal</div><div class="card-desc">History, Pol Sci, Psychology. Apply through DU portal.</div></div>
+        <div class="detail-card reveal reveal-d3" onclick="scrollToSection('counselling');setTab('design')"><span class="card-emoji">🎨</span><div class="card-title">NID/NIFT Counselling</div><div class="card-desc">Portfolio + test. Centralized admission.</div></div>
+        <div class="detail-card reveal reveal-d4" onclick="askAI('Humanities','Ashoka FLAME Krea liberal arts admission')"><span class="card-emoji">🌟</span><div class="card-title">Liberal Arts Unis</div><div class="card-desc">Ashoka, FLAME, Krea — profile-based. Apply early.</div></div>
+      </div>
+    </div>
+    <button class="btn-main btn-filled" style="margin-top:2rem;" onclick="showModal('Humanities')">📚 Full Humanities Guide →</button>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradCoun" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)"/>
+        <stop offset="20%"  stop-color="rgba(135,167,179,0.25)"/>
+        <stop offset="50%"  stop-color="rgba(135,167,179,0.55)">
+          <animate attributeName="stop-color" values="rgba(135,167,179,0.55);rgba(202,228,219,0.55);rgba(135,167,179,0.55)" dur="5s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="80%"  stop-color="rgba(135,167,179,0.25)"/>
+        <stop offset="100%" stop-color="rgba(135,167,179,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="38" rx="720" ry="13" fill="none" stroke="url(#ringGradCoun)" stroke-width="1.5" opacity="0.8">
+      <animateTransform attributeName="transform" type="scale" values="1 1;1.015 1.2;1 1" dur="5s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <ellipse cx="720" cy="38" rx="360" ry="6" fill="none" stroke="rgba(202,228,219,0.18)" stroke-width="1"/>
+    <line x1="180" y1="38" x2="1260" y2="38" stroke="rgba(135,167,179,0.07)" stroke-width="1"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: COUNSELLING -->
+<div class="h-slide" data-section="counselling">
+<section id="counselling">
+  <div class="orb orb-amber" style="width:400px;height:400px;top:-60px;right:-100px;opacity:0.35;filter:blur(90px);mix-blend-mode:screen;"></div>
+  <div class="orb orb-copper" style="width:300px;height:300px;bottom:-40px;left:-70px;opacity:0.30;filter:blur(80px);mix-blend-mode:screen;"></div>
+  <div class="section-content">
+    <div class="s-label">Complete Counselling Guide</div>
+    <h2 class="s-h2 reveal">State & National Counselling</h2>
+    <p class="s-desc reveal reveal-d1">Every major counselling system — exams required, colleges covered, timelines, stages. Click any card for full details.</p>
+    <div class="counselling-intro reveal">
+      <div class="strat-label">🔑 The Golden Rule of Counselling</div>
+      <div class="strat-text">Same rank, different outcome. The student who masters counselling beats the student with 10 more marks. Apply to ALL eligible portals simultaneously. Never wait for one result to apply to the next. A seat held at a lower-preference college can always be upgraded.</div>
+    </div>
+    <div class="counselling-tabs" id="counselling-tabs">
+      <button class="c-tab active" onclick="setTab('engineering')">⚙️ Engineering</button>
+      <button class="c-tab" onclick="setTab('medical')">🧬 Medical</button>
+      <button class="c-tab" onclick="setTab('law')">⚖️ Law</button>
+      <button class="c-tab" onclick="setTab('design')">🎨 Design</button>
+      <button class="c-tab" onclick="setTab('commerce')">📊 Commerce</button>
+      <button class="c-tab" onclick="setTab('state')">🗺️ State</button>
+    </div>
+
+    <!-- ENGINEERING PANEL -->
+    <div class="counselling-panel active" id="panel-engineering">
+      <div class="c-card" id="card-josaa" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(135,167,179,0.2))">🌍</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">JoSAA — Joint Seat Allocation Authority</div>
+            <div class="c-card-subtitle">IITs · NITs · IIITs · GFTIs — All in one portal</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">ENGINEERING</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exams: JEE Main + JEE Advanced</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">The most important counselling portal for engineering. JEE Main qualifies you for NITs/IIITs/GFTIs while JEE Advanced qualifies for IITs. Both handled under one roof.</p>
+          <div class="c-exam-tag">Colleges Covered (570+ institutions)</div>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🏆 IIT Bombay</div><div class="c-college-pill">🏆 IIT Delhi</div>
+            <div class="c-college-pill">🏆 IIT Madras</div><div class="c-college-pill">🏆 IIT Kanpur</div>
+            <div class="c-college-pill">NIT Trichy</div><div class="c-college-pill">NIT Warangal</div>
+            <div class="c-college-pill">IIIT Hyderabad</div><div class="c-college-pill">All 23 IITs</div>
+            <div class="c-college-pill">All 31 NITs</div><div class="c-college-pill">73+ GFTIs</div>
+          </div>
+          <hr class="c-divider">
+          <div class="c-exam-tag">Timeline & Stages</div>
+          <div class="c-timeline">
+            <div class="c-tl-item"><div class="c-tl-dot tl-pink">JAN</div><div class="c-tl-content"><div class="c-tl-month">January</div><div class="c-tl-stage">JEE Main Session 1</div><div class="c-tl-desc">First attempt. Results within 2 weeks.</div></div></div>
+            <div class="c-tl-item"><div class="c-tl-dot tl-vio">APR</div><div class="c-tl-content"><div class="c-tl-month">April</div><div class="c-tl-stage">JEE Main Session 2</div><div class="c-tl-desc">Final chance to improve rank.</div></div></div>
+            <div class="c-tl-item"><div class="c-tl-dot tl-gold">MAY</div><div class="c-tl-content"><div class="c-tl-month">May</div><div class="c-tl-stage">JEE Advanced Registration</div><div class="c-tl-desc">Top 2.5L ranks qualify. Window is only 3–4 days!</div></div></div>
+            <div class="c-tl-item"><div class="c-tl-dot tl-orange">JUN</div><div class="c-tl-content"><div class="c-tl-month">June</div><div class="c-tl-stage">JEE Advanced + Results</div><div class="c-tl-desc">Exam 1st week. Results 3rd week.</div></div></div>
+            <div class="c-tl-item"><div class="c-tl-dot tl-sky">JUL</div><div class="c-tl-content"><div class="c-tl-month">July</div><div class="c-tl-stage">JoSAA Round 1–5</div><div class="c-tl-desc">Registration → Choice filling → Allotment. <strong>Fill 50+ choices minimum.</strong></div></div></div>
+            <div class="c-tl-item"><div class="c-tl-dot tl-green">AUG</div><div class="c-tl-content"><div class="c-tl-month">August</div><div class="c-tl-stage">JoSAA Rounds 6–7 + CSAB</div><div class="c-tl-desc">CSAB Special rounds fill remaining NIT/IIIT seats.</div></div></div>
+          </div>
+          <button class="btn-main btn-filled" style="margin-top:1rem" onclick="askAI('PCM','JoSAA choice filling strategy and rounds');event.stopPropagation()">Ask AI about JoSAA →</button>
+        </div>
+      </div>
+      <div class="c-card" id="card-jac" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(202,228,219,0.15))">🏙️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">JAC Delhi — Joint Admission Counselling</div>
+            <div class="c-card-subtitle">DTU · NSUT · IIIT Delhi · IGDTUW</div>
+            <div class="c-card-badges"><span class="c-badge badge-state">DELHI STATE</span><span class="c-badge badge-national">ENGINEERING</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: JEE Main</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">~85% seats reserved for Delhi domicile. Runs parallel to JoSAA — apply to both simultaneously.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🎓 DTU</div><div class="c-college-pill">🎓 NSUT</div>
+            <div class="c-college-pill">🎓 IIIT Delhi</div><div class="c-college-pill">🎓 IGDTUW</div>
+          </div>
+          <button class="btn-main btn-ghost" style="margin-top:1rem" onclick="askAI('PCM','JAC Delhi vs JoSAA strategy');event.stopPropagation()">Ask AI: JAC vs JoSAA →</button>
+        </div>
+      </div>
+      <div class="c-card" id="card-ipu" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(135,167,179,0.15))">🏢</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">IPU CET — Guru Gobind Singh Indraprastha University</div>
+            <div class="c-card-subtitle">USICT · MAIT · MSIT · VIPS · 100+ colleges</div>
+            <div class="c-card-badges"><span class="c-badge badge-state">DELHI STATE</span><span class="c-badge badge-national">ENGINEERING + OTHERS</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: JEE Main OR IPU CET</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">More total seats than JAC. Accepts both JEE Main rank and IPU CET score. Excellent CS/IT backup for Delhi + UP students.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">USICT</div><div class="c-college-pill">MAIT</div>
+            <div class="c-college-pill">MSIT</div><div class="c-college-pill">VIPS</div><div class="c-college-pill">BPIT</div>
+          </div>
+          <button class="btn-main btn-ghost" style="margin-top:1rem" onclick="askAI('PCM','IPU counselling vs JAC Delhi comparison');event.stopPropagation()">Compare IPU vs JAC →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDICAL PANEL -->
+    <div class="counselling-panel" id="panel-medical">
+      <div class="c-card" id="card-mcc" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(135,167,179,0.2))">🏛️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">MCC — Medical Counselling Committee (AIQ)</div>
+            <div class="c-card-subtitle">AIIMS · JIPMER · All-India Quota · Deemed Universities</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">MEDICAL</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: NEET UG</div>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🏥 AIIMS Delhi</div><div class="c-college-pill">🏥 JIPMER</div>
+            <div class="c-college-pill">All Govt Medical (15%)</div><div class="c-college-pill">All Deemed Universities</div>
+          </div>
+          <button class="btn-main btn-filled" style="margin-top:1rem" onclick="askAI('PCB','MCC AIQ counselling strategy AIIMS NEET');event.stopPropagation()">Ask AI about MCC →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW PANEL -->
+    <div class="counselling-panel" id="panel-law">
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(202,228,219,0.2),rgba(118,97,97,0.15))">⚖️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">CLAT Counselling — Consortium of NLUs</div>
+            <div class="c-card-subtitle">All 24 National Law Universities — Centralized</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">LAW</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: CLAT</div>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🏆 NLSIU Bangalore</div><div class="c-college-pill">🏆 NALSAR Hyderabad</div>
+            <div class="c-college-pill">🏆 NLU Delhi (AILET)</div><div class="c-college-pill">All 24 NLUs</div>
+          </div>
+          <button class="btn-main btn-filled" style="margin-top:1rem" onclick="askAI('Humanities','CLAT NLU counselling strategy');event.stopPropagation()">Ask AI about CLAT →</button>
+        </div>
+      </div>
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(64,128,192,0.2),rgba(96,64,160,0.15))">🏛️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">AILET — All India Law Entrance Test</div>
+            <div class="c-card-subtitle">NLU Delhi — Separate exam from CLAT</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">LAW</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: AILET (NLU Delhi own exam)</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">NLU Delhi conducts its own separate entrance exam — AILET. This is NOT through CLAT. Apply separately on nlud.ac.in.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🏆 NLU Delhi</div><div class="c-college-pill">Top corporate law placements</div>
+          </div>
+          <button class="btn-main btn-ghost" style="margin-top:1rem" onclick="askAI('Humanities','AILET NLU Delhi admission strategy vs CLAT');event.stopPropagation()">Ask AI: AILET vs CLAT →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN PANEL -->
+    <div class="counselling-panel" id="panel-design">
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(202,228,219,0.15))">🎨</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">NID DAT — National Institute of Design</div>
+            <div class="c-card-subtitle">NID Ahmedabad · Bangalore · Jorhat + 8 others</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">DESIGN</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: NID DAT — 2 stages</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">Stage 1: Written + Studio test. Stage 2: Portfolio review + personal interview. Both must be cleared for admission.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">🎨 NID Ahmedabad</div><div class="c-college-pill">NID Bangalore</div>
+            <div class="c-college-pill">NID Jorhat</div><div class="c-college-pill">8 more campuses</div>
+          </div>
+          <button class="btn-main btn-filled" style="margin-top:1rem" onclick="askAI('Humanities','NID DAT preparation strategy design portfolio');event.stopPropagation()">Ask AI about NID →</button>
+        </div>
+      </div>
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(118,97,97,0.15))">✂️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">NIFT — National Institute of Fashion Technology</div>
+            <div class="c-card-subtitle">17 Campuses Across India — Centralized Counselling</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">FASHION & DESIGN</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: NIFT Entrance Test</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">GAT (General Ability Test) + CAT (Creative Ability Test) + Situation Test. Portfolio critical for BDes/BFTech.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">NIFT Delhi</div><div class="c-college-pill">NIFT Mumbai</div>
+            <div class="c-college-pill">NIFT Bangalore</div><div class="c-college-pill">17 campuses total</div>
+          </div>
+          <button class="btn-main btn-ghost" style="margin-top:1rem" onclick="askAI('Humanities','NIFT entrance test preparation fashion design');event.stopPropagation()">Ask AI about NIFT →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMERCE PANEL -->
+    <div class="counselling-panel" id="panel-commerce">
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(202,228,219,0.2),rgba(118,97,97,0.15))">📊</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">CUET UG — Central Universities Admission</div>
+            <div class="c-card-subtitle">DU · BHU · JNU · Jamia · 250+ universities</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">MULTI-STREAM</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: CUET UG (NTA)</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">⚠️ No single counselling portal! After CUET score, each university has its OWN admission portal. Register on all university portals separately.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">DU → csas.du.ac.in</div><div class="c-college-pill">BHU → bhuonline.in</div>
+            <div class="c-college-pill">SRCC (DU)</div><div class="c-college-pill">250+ universities</div>
+          </div>
+          <button class="btn-main btn-filled" style="margin-top:1rem" onclick="askAI('Commerce','CUET DU CSAS BHU admission strategy');event.stopPropagation()">Ask AI about CUET →</button>
+        </div>
+      </div>
+      <div class="c-card" onclick="toggleCard(this)">
+        <div class="c-card-header">
+          <div class="c-card-icon" style="background:linear-gradient(135deg,rgba(135,167,179,0.2),rgba(202,228,219,0.15))">🏛️</div>
+          <div class="c-card-meta">
+            <div class="c-card-name">IPMAT — IIM Indore & Rohtak</div>
+            <div class="c-card-subtitle">5-Year Integrated MBA Programme</div>
+            <div class="c-card-badges"><span class="c-badge badge-national">NATIONAL</span><span class="c-badge badge-national">MANAGEMENT</span></div>
+          </div>
+          <div class="c-card-arrow">›</div>
+        </div>
+        <div class="c-card-body">
+          <div class="c-exam-tag">Qualifying Exam: IPMAT (IIM Indore) / JIPMAT (IIM Rohtak)</div>
+          <p style="font-size:0.88rem;color:var(--text-2);margin-bottom:1.2rem;line-height:1.8">Two separate tests for two separate IIMs. Both are highly competitive with 5-year integrated MBA as the outcome.</p>
+          <div class="c-colleges-grid">
+            <div class="c-college-pill">IIM Indore</div><div class="c-college-pill">IIM Rohtak</div>
+            <div class="c-college-pill">Direct MBA pathway</div><div class="c-college-pill">₹25L+ placements</div>
+          </div>
+          <button class="btn-main btn-ghost" style="margin-top:1rem" onclick="askAI('Commerce','IPMAT JIPMAT preparation strategy IIM Indore Rohtak');event.stopPropagation()">Ask AI about IPMAT →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE PANEL -->
+    <div class="counselling-panel" id="panel-state">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;">
+        <div class="c-card" onclick="toggleCard(this)">
+          <div class="c-card-header">
+            <div class="c-card-icon" style="background:rgba(118,97,97,0.15)">🔴</div>
+            <div class="c-card-meta"><div class="c-card-name">Maharashtra — MHT CET</div><div class="c-card-subtitle">CAP Rounds · Engineering + Pharmacy</div><div class="c-card-badges"><span class="c-badge badge-state">MAHARASHTRA</span></div></div>
+            <div class="c-card-arrow">›</div>
+          </div>
+          <div class="c-card-body">
+            <div class="c-colleges-grid"><div class="c-college-pill">COEP Pune</div><div class="c-college-pill">VJTI Mumbai</div><div class="c-college-pill">ICT Mumbai</div></div>
+            <button class="btn-main btn-ghost" style="margin-top:1rem;font-size:0.82rem" onclick="askAI('PCM','MHT CET Maharashtra CAP counselling');event.stopPropagation()">Ask AI →</button>
+          </div>
+        </div>
+        <div class="c-card" onclick="toggleCard(this)">
+          <div class="c-card-header">
+            <div class="c-card-icon" style="background:rgba(202,228,219,0.15)">🟡</div>
+            <div class="c-card-meta"><div class="c-card-name">Karnataka — KCET / COMEDK</div><div class="c-card-subtitle">KEA · All Karnataka Colleges</div><div class="c-card-badges"><span class="c-badge badge-state">KARNATAKA</span></div></div>
+            <div class="c-card-arrow">›</div>
+          </div>
+          <div class="c-card-body">
+            <div class="c-colleges-grid"><div class="c-college-pill">RV College</div><div class="c-college-pill">BMS College</div><div class="c-college-pill">PES University</div></div>
+            <button class="btn-main btn-ghost" style="margin-top:1rem;font-size:0.82rem" onclick="askAI('PCM','KCET COMEDK Karnataka engineering counselling');event.stopPropagation()">Ask AI →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider flip" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradAI" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)"/>
+        <stop offset="25%"  stop-color="rgba(96,64,160,0.30)"/>
+        <stop offset="50%"  stop-color="rgba(140,90,220,0.50)">
+          <animate attributeName="stop-color" values="rgba(140,90,220,0.50);rgba(202,228,219,0.50);rgba(140,90,220,0.50)" dur="7s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="75%"  stop-color="rgba(96,64,160,0.30)"/>
+        <stop offset="100%" stop-color="rgba(135,167,179,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="40" rx="700" ry="10" fill="none" stroke="url(#ringGradAI)" stroke-width="1.2" opacity="0.75"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- ============================================================
+     SLIDE: EXAM SEARCH
+     ============================================================ -->
+<div class="h-slide" data-section="exam-search">
+<section id="exam-search">
+  <div class="section-content">
+    <p class="s-label reveal">Find Your Exam</p>
+    <h2 class="s-h reveal reveal-d1">🔍 Search All Exams</h2>
+    <p class="s-desc reveal reveal-d1">Every entrance exam across all streams — national, state, and university level. Search, filter, and find your path.</p>
+    <div class="exam-section">
+      <div class="search-bar">
+        <input type="text" class="search-input" id="examSearch" placeholder="Search by exam name (e.g. JEE, NEET, CLAT...)" onkeyup="filterExams()">
+        <select class="filter-select" id="examType" onchange="filterExams()">
+          <option value="">All Categories</option>
+          <option value="national">National Level</option>
+          <option value="state">State Level</option>
+          <option value="university">University Specific</option>
+        </select>
+      </div>
+      <div class="exam-grid" id="examGrid"></div>
+    </div>
+  </div>
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: AI SECTION -->
+<div class="h-slide" data-section="ai-section">
+<section id="ai-section">
+  <div class="orb orb-amber" style="width:350px;height:350px;top:10%;right:-60px;opacity:0.35;filter:blur(80px);mix-blend-mode:screen;"></div>
+  <div class="gspot" style="width:500px;height:500px;background:radial-gradient(circle,rgba(96,64,160,0.09),transparent 70%);top:-100px;right:-100px;pointer-events:none;"></div>
+  <div class="ai-wrap">
+    <div class="ai-header">
+      <div class="ai-badge"><div class="ai-badge-pulse"></div>Groq AI · llama-3.3-70b · Lightning Fast</div>
+      <h2 class="ai-title">Chat with Your <em>AI Counsellor</em></h2>
+      <p class="ai-sub">Ask anything — exams, colleges, counselling strategy, career paths. No fluff. Just clarity.</p>
+    </div>
+    <div class="ai-chat-box">
+      <div class="ai-chat-topbar">
+        <div class="topbar-dots"><div class="topbar-dot"></div><div class="topbar-dot"></div><div class="topbar-dot"></div></div>
+        <div class="topbar-label">Citadel AI · Ready</div>
+      </div>
+      <div class="quick-prompts" id="quick-prompts">
+        <button class="qp-btn" onclick="quickSend(this)">What stream should I pick?</button>
+        <button class="qp-btn" onclick="quickSend(this)">How does JoSAA work?</button>
+        <button class="qp-btn" onclick="quickSend(this)">NEET backup plan?</button>
+        <button class="qp-btn" onclick="quickSend(this)">Commerce colleges in Delhi?</button>
+        <button class="qp-btn" onclick="quickSend(this)">JAC vs IPU vs JoSAA?</button>
+        <button class="qp-btn" onclick="quickSend(this)">PCM but I like Economics?</button>
+      </div>
+      <div class="chat-window" id="chat-box">
+        <div class="chat-placeholder" id="chat-placeholder">
+          <div class="chat-ph-icon">🎯</div>
+          <div class="chat-ph-text">AI Counsellor is ready</div>
+          <div class="chat-ph-sub">Ask me anything about your college journey!</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="user-input"
+          placeholder="Ask about exams, colleges, counselling, careers…"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"/>
+        <button class="chat-send" id="send-btn" onclick="sendMsg()">Send ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SATURN RING DIVIDER -->
+<div class="saturn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGradCTA" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(135,167,179,0)"/>
+        <stop offset="15%"  stop-color="rgba(200,90,32,0.20)"/>
+        <stop offset="50%"  stop-color="rgba(135,167,179,0.55)">
+          <animate attributeName="stop-color" values="rgba(135,167,179,0.55);rgba(240,192,96,0.65);rgba(135,167,179,0.55)" dur="4s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="85%"  stop-color="rgba(200,90,32,0.20)"/>
+        <stop offset="100%" stop-color="rgba(135,167,179,0)"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="720" cy="38" rx="720" ry="14" fill="none" stroke="url(#ringGradCTA)" stroke-width="2" opacity="0.85">
+      <animateTransform attributeName="transform" type="scale" values="1 1;1.02 1.25;1 1" dur="4s" repeatCount="indefinite" additive="sum"/>
+    </ellipse>
+    <ellipse cx="720" cy="38" rx="500" ry="7" fill="none" stroke="rgba(240,192,96,0.20)" stroke-width="1"/>
+    <ellipse cx="720" cy="38" rx="260" ry="4" fill="none" stroke="rgba(135,167,179,0.12)" stroke-width="1"/>
+  </svg>
+</div>
+
+</section>
+</div><!-- end h-slide -->
+
+<!-- SLIDE: CTA -->
+<div class="h-slide" data-section="cta">
+
+<!-- NOTIFICATION CENTER -->
+<div id="notification-center" class="notification-center"></div>
+
+<!-- CALENDAR SECTION -->
+<section id="calendar-section" style="padding:3rem 2rem;max-width:1200px;margin:0 auto;">
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <h2 class="calendar-title">📅 Exam Calendar</h2>
+            <div class="calendar-nav">
+                <button class="cal-btn" onclick="previousMonth()">← Prev</button>
+                <span style="padding: 0.5rem 1rem; align-self: center; color: var(--text-2);" id="monthYear"></span>
+                <button class="cal-btn" onclick="nextMonth()">Next →</button>
+            </div>
+        </div>
+        <div class="cal-grid" id="calendarGrid"></div>
+        <div class="cal-legend">
+            <div class="legend-item">
+                <div class="legend-dot eligible"></div>
+                <span>Eligible</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot applied"></div>
+                <span>Applied</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot appeared"></div>
+                <span>Appeared</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- SCHOLARSHIPS SECTION -->
+<section id="scholarship-search-section" style="padding:3rem 2rem;max-width:1200px;margin:0 auto;">
+    <div class="scholarship-section">
+        <h2 class="scholarship-title">🏆 Search Scholarships</h2>
+        <div class="scholarship-search">
+            <input type="text" class="search-input" id="scholarshipSearch" placeholder="Search scholarships..." onkeyup="filterScholarships()">
+            <select class="filter-select" id="stateFilter" onchange="filterScholarships()">
+                <option value="">All India</option>
+                <option value="delhi">Delhi</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+                <option value="westbengal">West Bengal</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="punjab">Punjab</option>
+                <option value="haryana">Haryana</option>
+                <option value="gujarat">Gujarat</option>
+            </select>
+        </div>
+        <div class="scholarship-grid" id="scholarshipGrid"></div>
+    </div>
+</section>
+
+<section id="cta">
+  <div class="section-content" style="text-align:center;">
+    <div class="cta-box reveal">
+      <h2 class="cta-h">Your Path. Your Rules. 💡</h2>
+      <p class="cta-p">No theme restrictions. No one-size-fits-all roadmap. Whether it's Fintech, EdTech, GovTech, or something entirely your own — bring your idea, pick your stream, and build something real. Judged on innovation, feasibility, and potential to scale.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-main btn-filled" onclick="scrollToSection('streams')">🚀 Explore Streams</button>
+        <button class="btn-main btn-gold" onclick="scrollToSection('counselling')">🗺️ Counselling Guide</button>
+        <button class="btn-main btn-ghost" onclick="scrollToSection('ai-section')">Chat with AI →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-links">
+    <a onclick="scrollToSection('streams')">Streams</a>
+    <a onclick="scrollToSection('counselling')">Counselling Guide</a>
+    <a onclick="scrollToSection('exam-search')">Exam Search</a>
+    <a onclick="scrollToSection('pcm')">PCM</a>
+    <a onclick="scrollToSection('pcb')">PCB</a>
+    <a onclick="scrollToSection('ai-section')">AI Counsellor</a>
+    <a onclick="showToast('Signed out successfully','👋');setTimeout(()=>location.reload(),1000)" style="color:var(--copper)">Sign Out</a>
+  </div>
+  <p>The Citadel — Your Complete Class 12 to College Navigator</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;opacity:0.4;">200+ exams · Every counselling portal · Zero fluff · Pure clarity &nbsp;·&nbsp; <strong>AI-powered by Groq</strong></p>
+</footer>
+</div><!-- end h-slide footer -->
+
+</div><!-- end h-track -->
+
+<!-- ============ MODAL ============ -->
+<div class="modal-wrap" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   API KEY
+   ================================================================ */
+const GROQ_KEY = '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';
+
+/* ================================================================
+   PAGE TRANSITION
+   ================================================================ */
+function runPageTransition(callback) {
+  const pt = document.getElementById('page-transition');
+  pt.classList.add('entering');
+  setTimeout(() => {
+    pt.classList.remove('entering');
+    pt.classList.add('exiting');
+    if (callback) callback();
+    setTimeout(() => pt.classList.remove('exiting'), 700);
+  }, 650);
+}
+
+/* ================================================================
+   LOGIN
+   ================================================================ */
+const DEMO_USERS = [
+  { email: 'student@citadel.in', password: 'citadel123' },
+  { email: 'demo@test.com', password: 'demo123' },
+  { email: 'admin@citadel.in', password: 'admin123' }
+];
+
+function doLogin() {
+  const email    = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errEl    = document.getElementById('login-error');
+  const btn      = document.getElementById('login-btn');
+  const btnText  = document.getElementById('login-btn-text');
+  errEl.textContent = '';
+  if (!email) { showLoginError('Please enter your email address.'); shakeInput('login-email'); return; }
+  if (!password) { showLoginError('Please enter your password.'); shakeInput('login-password'); return; }
+  if (!/\S+@\S+\.\S+/.test(email)) { showLoginError('Please enter a valid email address.'); shakeInput('login-email'); return; }
+  btn.classList.add('loading');
+  btnText.textContent = 'Signing in...';
+  setTimeout(() => {
+    const user = DEMO_USERS.find(u => u.email === email && u.password === password);
+    if (user) {
+      btnText.textContent = '✓ Welcome!';
+      runPageTransition(() => {
+        document.getElementById('login-page').classList.add('hidden');
+        setTimeout(() => showToast(`Welcome to The Citadel! 🏰`, '🚀'), 200);
+      });
+    } else {
+      btn.classList.remove('loading');
+      btnText.textContent = 'Sign In →';
+      showLoginError('Invalid credentials. Try: demo@test.com / demo123');
+      shakeInput('login-email'); shakeInput('login-password');
+    }
+  }, 1200);
+}
+
+function enterAsGuest() {
+  runPageTransition(() => {
+    document.getElementById('login-page').classList.add('hidden');
+    // Keep body overflow:hidden for horizontal scroll
+    setTimeout(() => showToast('Exploring as guest. Sign in for full access!', '👋'), 200);
+  });
+}
+
+function showSignup() {
+  const loginCard  = document.getElementById('login-card');
+  const signupCard = document.getElementById('signup-card');
+  loginCard.style.animation  = 'loginCardOut 0.3s var(--ease-out) forwards';
+  setTimeout(() => {
+    loginCard.style.display  = 'none';
+    loginCard.style.animation = '';
+    signupCard.style.display = 'flex';
+    signupCard.style.flexDirection = 'column';
+    signupCard.style.animation = 'loginCardIn 0.4s var(--ease-spring) both';
+  }, 280);
+}
+
+function showLogin() {
+  const loginCard  = document.getElementById('login-card');
+  const signupCard = document.getElementById('signup-card');
+  signupCard.style.animation = 'loginCardOut 0.3s var(--ease-out) forwards';
+  setTimeout(() => {
+    signupCard.style.display = 'none';
+    signupCard.style.animation = '';
+    loginCard.style.display = 'flex';
+    loginCard.style.flexDirection = 'column';
+    loginCard.style.animation = 'loginCardIn 0.4s var(--ease-spring) both';
+  }, 280);
+}
+
+function doSignup() {
+  const name     = document.getElementById('signup-name').value.trim();
+  const email    = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  const stream   = document.getElementById('signup-stream').value;
+  const errEl    = document.getElementById('signup-error');
+  const btn      = document.getElementById('signup-btn');
+  const btnText  = document.getElementById('signup-btn-text');
+  errEl.textContent = '';
+  if (!name)     { errEl.textContent = 'Please enter your full name.'; shakeInput('signup-name'); return; }
+  if (!email)    { errEl.textContent = 'Please enter your email address.'; shakeInput('signup-email'); return; }
+  if (!/\S+@\S+\.\S+/.test(email)) { errEl.textContent = 'Please enter a valid email address.'; shakeInput('signup-email'); return; }
+  if (!password) { errEl.textContent = 'Please create a password.'; shakeInput('signup-password'); return; }
+  if (password.length < 6) { errEl.textContent = 'Password must be at least 6 characters.'; shakeInput('signup-password'); return; }
+  btn.classList.add('loading');
+  btnText.textContent = 'Creating account...';
+  setTimeout(() => {
+    DEMO_USERS.push({ email, password });
+    btnText.textContent = '✓ Account Created!';
+    runPageTransition(() => {
+      document.getElementById('login-page').classList.add('hidden');
+      setTimeout(() => showToast(`Welcome to The Citadel, ${name.split(' ')[0]}! 🏰`, '🚀'), 200);
+    });
+  }, 1200);
+}
+
+function toggleSignupPw() {
+  const inp = document.getElementById('signup-password');
+  const tog = document.getElementById('signup-pw-toggle');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  tog.textContent = inp.type === 'password' ? '👁' : '🙈';
+}
+
+function showLoginError(msg) {
+  document.getElementById('login-error').textContent = msg;
+}
+function shakeInput(id) {
+  const el = document.getElementById(id);
+  el.classList.add('error', 'shake');
+  setTimeout(() => el.classList.remove('shake'), 500);
+  setTimeout(() => el.classList.remove('error'), 2500);
+}
+function togglePw() {
+  const inp = document.getElementById('login-password');
+  const tog = document.getElementById('pw-toggle');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  tog.textContent = inp.type === 'password' ? '👁' : '🙈';
+}
+
+/* ================================================================
+   THEME
+   ================================================================ */
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+}
+
+/* ================================================================
+   DOODLE CANVAS
+   ================================================================ */
+const canvas = document.getElementById('doodle-canvas');
+const ctx = canvas.getContext('2d');
+const doodles = [];
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+const doodleSymbols = ['∫','∑','∞','Δ','π','√','≈','⊕','⊗','∂','φ','Ω','★','◆','○','△','□','⬡','dx','dy','v=u+at','F=ma','E=mc²','PV=nRT'];
+for (let i = 0; i < 28; i++) {
+  doodles.push({ x:Math.random()*window.innerWidth, y:Math.random()*window.innerHeight, symbol:doodleSymbols[Math.floor(Math.random()*doodleSymbols.length)], size:Math.random()*14+8, opacity:Math.random()*0.06+0.02, vx:(Math.random()-0.5)*0.18, vy:(Math.random()-0.5)*0.18, rotation:Math.random()*Math.PI*2, rotSpeed:(Math.random()-0.5)*0.004, color:['#87a7b3','#cae4db','#cdc7be','#766161','#a8bab6'][Math.floor(Math.random()*5)] });
+}
+function animateDoodles() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  doodles.forEach(d => {
+    ctx.save(); ctx.translate(d.x,d.y); ctx.rotate(d.rotation); ctx.globalAlpha=d.opacity; ctx.fillStyle=d.color;
+    ctx.font=`${d.size}px 'DM Mono',monospace`; ctx.fillText(d.symbol,0,0); ctx.restore();
+    d.x+=d.vx; d.y+=d.vy; d.rotation+=d.rotSpeed;
+    if(d.x<-80)d.x=canvas.width+80; if(d.x>canvas.width+80)d.x=-80;
+    if(d.y<-80)d.y=canvas.height+80; if(d.y>canvas.height+80)d.y=-80;
+  });
+  requestAnimationFrame(animateDoodles);
+}
+animateDoodles();
+
+/* ================================================================
+   DATA
+   ================================================================ */
+const streamData = {
+  PCM: { label:'Science Non-Medical',emoji:'⚙️',tagline:'Maximum scope. Hardest path. JEE is the gateway — not the only door.',exams:[{e:'⚡',n:'JEE Main',d:'Gateway to NITs, IIITs, GFTIs. 2 attempts/year. Highest competition.'},{e:'🏆',n:'JEE Advanced',d:'IITs only. Top 2.5L JEE Main scorers qualify. Most prestigious.'},{e:'🎯',n:'BITSAT',d:'BITS Pilani, Goa, Hyderabad. Online exam. Predictable results.'},{e:'🔬',n:'IISER IAT',d:'Research path. BSc-MS dual degree. Monthly stipend.'},{e:'🏫',n:'VITEEE/SRMJEEE',d:'VIT, SRM — top private colleges. Good placements.'},{e:'🏫',n:'MET (Manipal)',d:'Manipal Institute of Technology. Good private alternative.'},{e:'🧮',n:'NEST',d:'NISER & CEBS. Research-focused. BSc in sciences.'},{e:'📐',n:'ISI Admission Test',d:'Indian Statistical Institute. Best for Maths & Data Science.'},{e:'🔢',n:'CMI Entrance Exam',d:'Chennai Mathematical Institute. Elite maths & CS program.'},{e:'🖥️',n:'UGEE (IIIT-H)',d:'IIIT Hyderabad. Research-based admission. Top CS/AI college.'},{e:'📋',n:'CUET UG',d:'Central Universities. Economics, CS, Data Science pathways.'},{e:'📊',n:'IPMAT',d:'IIM Indore/Rohtak. 5-year integrated MBA. Commerce-PCM crossover.'},{e:'🏛️',n:'NATA',d:'Architecture. National Aptitude Test. Required for B.Arch.'},{e:'🎨',n:'UCEED',d:'Design at IITs & IITB IDC. UI/UX & Product Design.'},{e:'🪖',n:'NDA',d:'National Defence Academy. After 12th PCM. UPSC exam.'}],domains:[{e:'💻',n:'Engineering/Tech',x:'JEE Main · JEE Advanced · BITSAT · VITEEE · MET'},{e:'🔬',n:'Pure Science/Research',x:'IISER IAT · NEST · ISI · CMI · UGEE'},{e:'📊',n:'Data Science/Economics',x:'CUET UG · IPMAT · ISI'},{e:'🪖',n:'Defense/Govt',x:'NDA · TES (via JEE Main)'},{e:'🎨',n:'Design/Architecture',x:'NATA · UCEED · CEED'}],counselling:[{e:'🌍',n:'JoSAA',d:'IITs, NITs, IIITs, GFTIs. 6+ rounds.'},{e:'🏙️',n:'JAC Delhi',d:'DTU, NSUT, IIIT Delhi. 85% seats for Delhi students.'},{e:'🏢',n:'IPU Counselling',d:'USICT, MAIT, MSIT. More seats than JAC.'},{e:'⚡',n:'BITS Pilani',d:'BITSAT score. Pilani/Goa/Hyderabad.'},{e:'🏫',n:'VIT (VITEEE)',d:'VITEEE counselling. Vellore, Chennai, Bhopal campuses.'},{e:'🏫',n:'SRM (SRMJEEE)',d:'SRM counselling. Multiple campuses. Good placements.'},{e:'🏫',n:'Manipal (MET)',d:'MET counselling. Manipal, Jaipur campuses.'},{e:'🔢',n:'UPTAC (AKTU)',d:'All AKTU colleges in UP. 5 rounds + special rounds.'}],strategy:'Apply to ALL simultaneously — JoSAA + JAC Delhi + IPU + Private. Hold a private seat while trying for govt upgrades. Same rank, different college: depends entirely on choice filling order.' },
+  PCB: { label:'Science Medical',emoji:'🧬',tagline:'Focused path. NEET is king — but never your only bet.',exams:[{e:'🩺',n:'NEET UG',d:'MBBS, BDS, BAMS. 720 marks. One attempt/year.'},{e:'🔬',n:'IISER IAT',d:'Life sciences research. BS-MS. Stipend.'},{e:'🧮',n:'NEST',d:'NISER & CEBS. Research in life sciences. Strong stipend.'},{e:'📋',n:'CUET UG',d:'DU, BHU, JNU. Psychology, Bio, Biotech.'},{e:'🌾',n:'ICAR AIEEA',d:'Agriculture, Forestry, Food Tech.'},{e:'🏥',n:'AIIMS Paramedical',d:'Radiology, Lab Technology, Optometry. AIIMS institute.'},{e:'💊',n:'State Pharma CETs',d:'BPharm, DPharm. State-level pharmacy entrance exams.'},{e:'🩺',n:'BSc Nursing Exams',d:'AIIMS Nursing, State Nursing Entrances. Hospital & care careers.'},{e:'🧬',n:'Biotechnology Entrances',d:'JNU, BHU, Jamia — specialized BSc Biotech programs.'}],domains:[{e:'🏥',n:'Medical/MBBS',x:'NEET UG → AIIMS, Govt Medical'},{e:'🧬',n:'Life Sciences',x:'IISER IAT · NEST · CUET UG'},{e:'🧠',n:'Psychology/Neuro',x:'CUET UG · TISS · Christ University'},{e:'🌱',n:'Agriculture/Env',x:'ICAR AIEEA · State Ag Entrances'},{e:'💊',n:'Pharmacy/Allied',x:'State CETs · CUET · Private exams'}],counselling:[{e:'🏛️',n:'MCC (AIQ)',d:'15% all-India quota + AIIMS + Deemed.'},{e:'🗺️',n:'State Counselling',d:'85% state quota. Run separately from AIQ.'},{e:'🔬',n:'IISER / NISER',d:'Separate merit-based research institute admissions.'},{e:'🎓',n:'CUET University Portals',d:'DU, BHU, JNU each have own portals. Apply separately.'}],strategy:'Primary: NEET. Backup: CUET UG + IISER IAT. Register CUET before NEET results. MCC AIQ (15%) + State counselling (85%) run separately — apply to BOTH.' },
+  Commerce: { label:'Business & Finance',emoji:'📊',tagline:'Most underrated stream. Highest ROI. Multi-application is the strategy.',exams:[{e:'🏛️',n:'IPMAT',d:'IIM Indore/Rohtak. 5-year integrated MBA.'},{e:'💰',n:'CA Foundation',d:'Chartered Accountancy. Start anytime after 12th.'},{e:'🏢',n:'CS Executive Entrance',d:'Company Secretary. Start after 12th. High corporate demand.'},{e:'📊',n:'CMA Foundation',d:'Cost Accountant. Parallel to CA. Strong industry value.'},{e:'📋',n:'CUET UG',d:'DU (SRCC, Hindu), BHU, JNU.'},{e:'⚖️',n:'CLAT',d:'24 NLUs. Integrated LLB.'},{e:'📐',n:'ISI Admission Test',d:'Statistics & Data Science. Only for Commerce with Maths.'},{e:'🏫',n:'NPAT (NMIMS)',d:'NMIMS Mumbai. BBA, BCom, Finance programs.'},{e:'🎓',n:'SET (Symbiosis)',d:'Symbiosis Pune. BBA, BCom, Law programs.'},{e:'⚖️',n:'LSAT India',d:'Jindal, Symbiosis law schools. Corporate law path.'},{e:'⚖️',n:'SLAT',d:'Symbiosis Law Admission Test. Strong placements.'},{e:'🏨',n:'NCHMCT JEE',d:'Hotel Management institutes across India.'},{e:'🌍',n:'SAT',d:'Foreign universities. Profile + SAT opens global doors.'}],domains:[{e:'📈',n:'Management/BBA',x:'IPMAT · CUET · DU JAT · NPAT · SET'},{e:'💰',n:'Finance/CA',x:'CA Foundation · CS Executive · CMA Foundation'},{e:'⚖️',n:'Law',x:'CLAT · AILET · LSAT · SLAT'},{e:'📊',n:'Data Science/Quant',x:'ISI · CUET · IPMAT'},{e:'🏨',n:'Hospitality',x:'NCHMCT JEE · Private hotel mgmt exams'}],counselling:[{e:'🎓',n:'DU CSAS Portal',d:'BCom, Economics, Psychology.'},{e:'⚖️',n:'CLAT Counselling',d:'Centralized for NLUs.'},{e:'🏛️',n:'IPMAT Counselling',d:'IIM Indore/Rohtak separate portals. Interview round.'},{e:'🏢',n:'IPU (BBA/BCom)',d:'More seats. Backup to DU. CUET or IPU CET accepted.'},{e:'🏫',n:'Private University Portals',d:'NMIMS, Symbiosis, Christ — each own portal + interview.'},{e:'🏨',n:'NCHMCT JEE Counselling',d:'Centralized for IHMs. Similar to JoSAA process.'}],strategy:"Unlike PCM, there's no single portal. Apply simultaneously: CUET + CLAT + IPU + private universities. Track all portals — never miss a deadline." },
+  Humanities: { label:'Arts & Social Sciences',emoji:'📚',tagline:'Most flexible, most misunderstood. Strategy > exams here.',exams:[{e:'⚖️',n:'CLAT',d:'24 NLUs. ₹20L+ at top firms.'},{e:'🎓',n:'CUET UG',d:'200+ universities. All humanities subjects.'},{e:'📡',n:'IIMC',d:'Premier journalism institute. Top journalism career.'},{e:'🎨',n:'NID DAT',d:'National Institute of Design. Portfolio + test.'},{e:'👗',n:'NIFT Entrance Exam',d:'Fashion & design. Centralized counselling.'},{e:'⚖️',n:'LSAT India',d:'Jindal & Symbiosis law. Corporate law path.'},{e:'⚖️',n:'SLAT',d:'Symbiosis Law Admission Test. Strong placements.'},{e:'🏛️',n:'UPSC CSE',d:'Civil Services. BA + then UPSC after graduation.'},{e:'📰',n:'IPU CET (BJMC)',d:'Delhi journalism & mass comm colleges.'},{e:'🏨',n:'NCHMCT JEE',d:'Hotel Management. IHMs across India.'},{e:'🌍',n:'SAT / ACT',d:'Foreign universities. Profile + scores for abroad.'}],domains:[{e:'⚖️',n:'Law',x:'CLAT · AILET · DU LLB · LSAT · SLAT'},{e:'🧠',n:'Psychology',x:'CUET UG · TISS · Christ University'},{e:'📰',n:'Media/Journalism',x:'IIMC · XIC · IPU CET · CUET'},{e:'🎨',n:'Design/Creative',x:'NID DAT · NIFT · UCEED'},{e:'🏛️',n:'Civil Services',x:'UPSC CSE (post-graduation path)'},{e:'🏨',n:'Hospitality',x:'NCHMCT JEE · Private hotel mgmt exams'}],counselling:[{e:'⚖️',n:'CLAT Counselling',d:'Centralized for all NLUs.'},{e:'🎓',n:'DU CSAS',d:'History, Pol Sci, Psychology.'},{e:'🎨',n:'NID/NIFT Counselling',d:'Portfolio + test. Centralized.'},{e:'🏢',n:'IPU Counselling (BJMC)',d:'Delhi media & journalism colleges.'},{e:'🏫',n:'Private University Portals',d:'Ashoka, Christ, Symbiosis — own portals + interviews.'},{e:'🏨',n:'NCHMCT JEE Counselling',d:'Centralized for IHMs. Similar to JoSAA.'}],strategy:'Multi-application strategy: CUET (DU + BHU + others) + CLAT + IPU + private. For Ashoka/Krea/FLAME: extracurriculars + writing portfolio + interviews matter MORE than marks.' }
+};
+
+/* ================================================================
+   STREAM CARDS
+   ================================================================ */
+const accentMap = { PCM:'sc-pcm', PCB:'sc-pcb', Commerce:'sc-comm', Humanities:'sc-hum' };
+function buildStreamCards() {
+  const grid = document.getElementById('streams-grid');
+  const streams = [
+    { key:'PCM', emoji:'⚙️', name:'PCM', sub:'Science Non-Medical', tags:['JEE','BITSAT','IISER','NDA','NEST','ISI','CMI','UGEE','VITEEE','CUET','IPMAT','NATA','UCEED','MET'] },
+    { key:'PCB', emoji:'🧬', name:'PCB', sub:'Science Medical', tags:['NEET','IISER IAT','CUET','ICAR','NEST','AIIMS Paramedical','BSc Nursing','Biotechnology'] },
+    { key:'Commerce', emoji:'📊', name:'Commerce', sub:'Business & Finance', tags:['IPMAT','CA Foundation','CS Executive','CMA Foundation','CUET','CLAT','ISI','NPAT','SET','LSAT','SLAT','NCHMCT JEE','SAT'] },
+    { key:'Humanities', emoji:'📚', name:'Humanities', sub:'Arts & Social Sciences', tags:['CLAT','CUET','IIMC','NID DAT','NIFT','LSAT','SLAT','UPSC','NCHMCT JEE','SAT','IPU CET'] },
+  ];
+  streams.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'stream-card';
+    card.innerHTML = `
+      <div class="sc-accent ${accentMap[s.key]}"></div>
+      <span class="sc-emoji">${s.emoji}</span>
+      <div class="sc-title">${s.name}</div>
+      <div class="sc-sub">${s.sub}</div>
+      <div class="sc-tagline">${streamData[s.key].tagline}</div>
+      <div class="sc-tags">${s.tags.map(t=>`<span class="sc-tag">${t}</span>`).join('')}</div>
+      <button class="sc-btn" onclick="showModal('${s.key}');event.stopPropagation()">Explore Details <span class="sc-arrow">→</span></button>
+    `;
+    card.onclick = () => showModal(s.key);
+    grid.appendChild(card);
+    requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('in')));
+  });
+}
+
+/* ================================================================
+   MODAL
+   ================================================================ */
+function showModal(key) {
+  const d = streamData[key];
+  document.getElementById('modal-body').innerHTML = `
+    <span class="modal-tag">${d.emoji} ${d.label}</span>
+    <h2 class="modal-h">${d.emoji} ${key}</h2>
+    <p class="modal-sub">${d.tagline}</p>
+    <div class="d-section">
+      <div class="d-title">📝 Key Exams <small style="font-weight:400;font-family:var(--ff-body);font-size:0.75rem;opacity:0.6;margin-left:0.5rem;">— click any to ask AI</small></div>
+      <div class="cards-grid">${d.exams.map(e=>`
+        <div class="detail-card" onclick="askAI('${key}','${e.n.replace(/'/g,"\\'")}');closeModal();">
+          <span class="card-emoji">${e.e}</span>
+          <div class="card-title">${e.n}</div>
+          <div class="card-desc">${e.d}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">🎯 Career Domains</div>
+      <div class="cards-grid">${d.domains.map(dm=>`
+        <div class="detail-card" onclick="askAI('${key}','${dm.n.replace(/'/g,"\\'")} career path');closeModal();">
+          <span class="card-emoji">${dm.e}</span>
+          <div class="card-title">${dm.n}</div>
+          <div class="card-desc">${dm.x}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="d-section">
+      <div class="d-title">🏛️ Counselling Systems</div>
+      <div class="cards-grid">${d.counselling.map(c=>`
+        <div class="detail-card" onclick="askAI('${key}','${c.n.replace(/'/g,"\\'")} counselling');closeModal();">
+          <span class="card-emoji">${c.e}</span>
+          <div class="card-title">${c.n}</div>
+          <div class="card-desc">${c.d}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="strat-box">
+      <div class="strat-label">⚡ Gold Strategy</div>
+      <div class="strat-text">${d.strategy}</div>
+    </div>
+    <div style="margin-top:1.8rem;display:flex;gap:0.8rem;flex-wrap:wrap;">
+      <button class="btn-main btn-filled" onclick="askAI('${key}','complete strategy and career roadmap');closeModal();">Ask AI about ${key} →</button>
+      <button class="btn-main btn-ghost" onclick="closeModal()">Close</button>
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+  // body stays overflow:hidden for horizontal scroll engine
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  // body stays overflow:hidden for horizontal scroll engine
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+/* ================================================================
+   COUNSELLING TABS — FIXED (all 6 tabs properly handled)
+   ================================================================ */
+const TAB_NAMES = ['engineering','medical','law','design','commerce','state'];
+
+function setTab(tab) {
+  document.querySelectorAll('.c-tab').forEach((btn, i) => {
+    btn.classList.toggle('active', TAB_NAMES[i] === tab);
+  });
+  document.querySelectorAll('.counselling-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + tab);
+  if (panel) panel.classList.add('active');
+}
+
+function toggleCard(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.c-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
+  card.classList.toggle('open', !isOpen);
+}
+function openCounsellingCard(id) {
+  const card = document.getElementById('card-'+id);
+  if (card) { card.classList.add('open'); card.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+
+/* ================================================================
+   AI CHAT
+   ================================================================ */
+const SYSTEM_PROMPT = `You are the Citadel Counselor — a sharp, warm AI guide for Indian Class 12 students figuring out their next step.
+
+Rules:
+- Give clear, structured, India-specific advice on exams, streams, colleges, and counselling
+- Always explain WHY a path fits — not just what it is
+- Mention 3-5 specific exams/colleges when relevant
+- Keep answers concise but insightful — no fluff, no platitudes
+- Use short paragraphs, and bullet points where helpful
+- End with a punchy follow-up question to keep the student engaged
+
+India context:
+STREAMS: PCM (JEE/BITSAT/IISER/NDA/NEST/ISI/CMI/UGEE/VITEEE/SRMJEEE/MET/CUET/IPMAT/NATA/UCEED), PCB (NEET/IISER/CUET/ICAR/NEST/AIIMS Paramedical/BSc Nursing/Biotech Entrances), Commerce (IPMAT/CA Foundation/CS Executive/CMA Foundation/CUET/CLAT/ISI/NPAT/SET/LSAT/SLAT/NCHMCT JEE/SAT), Humanities (CLAT/CUET/IIMC/NID DAT/NIFT/LSAT/SLAT/UPSC/NCHMCT JEE/IPU CET/SAT)
+COUNSELLING: JoSAA (IITs/NITs/IIITs) + JAC Delhi (DTU/NSUT) + IPU + UPTAC + Private — apply simultaneously.
+Medical: MCC AIQ = 15% | State = 85% — both are mandatory. CUET: no central portal — each university (DU CSAS, BHU, JNU) has own system.`;
+
+let history = [];
+let isStreaming = false;
+let qpHidden = false;
+
+function askAI(stream, topic) {
+  const q = `I'm in ${stream} stream. Tell me about ${topic} — what should I know, strategy, and career outcomes?`;
+  document.getElementById('user-input').value = q;
+  scrollToSection('ai-section');
+  setTimeout(sendMsg, 600);
+}
+
+async function sendMsg() {
+  const input = document.getElementById('user-input');
+  const btn   = document.getElementById('send-btn');
+  const text  = input.value.trim();
+  if (!text || isStreaming) return;
+  if (!qpHidden) { document.getElementById('quick-prompts').style.display='none'; qpHidden=true; }
+  const ph = document.getElementById('chat-placeholder');
+  if (ph) ph.remove();
+  addMsg('user', text);
+  input.value = '';
+  history.push({ role:'user', content:text });
+  isStreaming = true; btn.disabled=true; btn.textContent='…';
+  const bubble = createStreamBubble();
+  try {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${GROQ_KEY}` },
+      body:JSON.stringify({ model:'llama-3.3-70b-versatile', messages:[{role:'system',content:SYSTEM_PROMPT},...history], stream:true, max_tokens:900, temperature:0.72 })
+    });
+    if (!res.ok) { const err=await res.json().catch(()=>({})); throw new Error(err?.error?.message||`HTTP ${res.status}`); }
+    const reader=res.body.getReader(); const decoder=new TextDecoder(); let fullText='',buffer='';
+    while(true) {
+      const {done,value}=await reader.read(); if(done)break;
+      buffer+=decoder.decode(value,{stream:true});
+      const lines=buffer.split('\n'); buffer=lines.pop();
+      for(const line of lines) {
+        const t=line.trim();
+        if(!t||t==='data: [DONE]'||!t.startsWith('data: '))continue;
+        try { const chunk=JSON.parse(t.slice(6)); const delta=chunk.choices?.[0]?.delta?.content; if(delta){fullText+=delta;bubble.innerHTML=fmt(fullText)+'<span class="cursor-blink">▍</span>';scrollBottom();} }
+        catch{}
+      }
+    }
+    bubble.innerHTML=fmt(fullText);
+    history.push({role:'assistant',content:fullText});
+  } catch(err) {
+    bubble.innerHTML=`<span style="color:var(--copper)">⚠️ ${err.message||'Connection error'}. Check API key in code.</span>`;
+  }
+  isStreaming=false; btn.disabled=false; btn.textContent='Send ↗'; scrollBottom();
+}
+
+function quickSend(el) { document.getElementById('user-input').value=el.textContent.trim(); sendMsg(); }
+
+function fmt(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`(.+?)`/g,'<code style="font-family:var(--ff-mono);background:var(--bg3);padding:0.1em 0.35em;border-radius:4px;font-size:0.85em;">$1</code>')
+    .replace(/\n/g,'<br>');
+}
+function addMsg(role,text) {
+  const box=document.getElementById('chat-box'); const wrap=document.createElement('div');
+  wrap.className=`msg${role==='user'?' user':''}`;
+  wrap.innerHTML=`<div class="msg-av ${role==='ai'?'av-ai':'av-me'}">${role==='ai'?'AI':'ME'}</div><div class="msg-bubble ${role==='ai'?'bubble-ai':'bubble-me'}">${fmt(text)}</div>`;
+  box.appendChild(wrap); scrollBottom();
+}
+function createStreamBubble() {
+  const box=document.getElementById('chat-box'); const wrap=document.createElement('div'); wrap.className='msg';
+  const av=document.createElement('div'); av.className='msg-av av-ai'; av.textContent='AI';
+  const bubble=document.createElement('div'); bubble.className='msg-bubble bubble-ai'; bubble.innerHTML='<span class="cursor-blink">▍</span>';
+  wrap.appendChild(av); wrap.appendChild(bubble); box.appendChild(wrap); scrollBottom(); return bubble;
+}
+function scrollBottom() { const box=document.getElementById('chat-box'); box.scrollTop=box.scrollHeight; }
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+// scrollToSection is overridden by the horizontal scroll engine below
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth'});
+}
+function toggleMobileMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* scroll bar and nav handled by VerticalScroll IIFE below */
+
+/* ================================================================
+   COUNTER ANIMATION
+   ================================================================ */
+function animateCounters() {
+  document.querySelectorAll('.hstat-n[data-target]').forEach(el => {
+    const target=parseInt(el.dataset.target); const suffix=el.innerHTML.match(/<span>(.*?)<\/span>/)?.[1]||'';
+    let current=0; const step=target/50;
+    const timer=setInterval(()=>{ current=Math.min(current+step,target); el.innerHTML=Math.floor(current)+`<span>${suffix}</span>`; if(current>=target)clearInterval(timer); },30);
+  });
+}
+
+/* ================================================================
+   TOAST
+   ================================================================ */
+function showToast(msg, emoji='✅') {
+  const toast=document.createElement('div'); toast.className='toast';
+  toast.innerHTML=`<span>${emoji}</span>${msg}`;
+  document.body.appendChild(toast);
+  setTimeout(()=>{ toast.classList.add('out'); setTimeout(()=>toast.remove(),350); },3200);
+}
+
+/* ================================================================
+   REVEAL ON SCROLL
+   ================================================================ */
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting)e.target.classList.add('in'); });
+},{threshold:0.1});
+
+function observeAll() {
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stream-card').forEach(el=>revealObs.observe(el));
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+buildStreamCards();
+observeAll();
+setTimeout(observeAll, 250);
+
+const heroObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateCounters();heroObs.disconnect();}
+},{threshold:0.3});
+heroObs.observe(document.getElementById('hero'));
+
+/* ================================================================
+   VERTICAL SCROLL ENGINE — replaces horizontal scroll
+   ================================================================ */
+
+/* Progress bar driven by window scroll */
+(function VerticalScroll() {
+  const barEl = document.getElementById('scroll-bar');
+
+  function updateBar() {
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    if (barEl) barEl.style.width = pct + '%';
+  }
+
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+
+  /* Section entrance via IntersectionObserver */
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('section').forEach(s => sectionObs.observe(s));
+  // Mark hero in-view immediately
+  const hero = document.getElementById('hero');
+  if (hero) hero.classList.add('in-view');
+
+  /* scrollToSection — smooth scroll to element by id */
+  window.scrollToSection = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  /* Nav scrolled class */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+})();
+
+/* 3D card hover ripple */
+document.querySelectorAll('.detail-card, .step-card, .stream-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width  - 0.5) * 10;
+    const y = ((e.clientY - r.top)  / r.height - 0.5) * 10;
+    card.style.transform = `translateY(-6px) rotateX(${-y * 0.4}deg) rotateY(${x * 0.4}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.5s var(--ease-out), border-color 0.25s, box-shadow 0.25s';
+    setTimeout(() => { card.style.transition = ''; }, 500);
+  });
+});
+</script>
+
+<script>
+/* CALENDAR FUNCTIONALITY */
+let currentDate = new Date();
+const examData = {
+    'JEE Main': { dates: [5, 15, 25], status: 'eligible' },
+    'JEE Advanced': { dates: [12], status: 'eligible' },
+    'BITSAT': { dates: [8, 18], status: 'applied' },
+    'VITEEE': { dates: [3, 13, 23], status: 'eligible' },
+    'NEET': { dates: [10, 20], status: 'appeared' },
+    'CAT': { dates: [14, 24], status: 'eligible' }
+};
+
+function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    document.getElementById('monthYear').textContent = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrevMonth = new Date(year, month, 0).getDate();
+    
+    const calendarGrid = document.getElementById('calendarGrid');
+    calendarGrid.innerHTML = '';
+    
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    days.forEach(day => {
+        const header = document.createElement('div');
+        header.className = 'cal-day-header';
+        header.textContent = day;
+        calendarGrid.appendChild(header);
+    });
+    
+    for (let i = firstDay - 1; i >= 0; i--) {
+        const day = document.createElement('div');
+        day.className = 'cal-day other-month';
+        day.textContent = daysInPrevMonth - i;
+        calendarGrid.appendChild(day);
+    }
+    
+    for (let i = 1; i <= daysInMonth; i++) {
+        const day = document.createElement('div');
+        day.className = 'cal-day';
+        day.textContent = i;
+        
+        let examStatus = null;
+        for (const [examName, examInfo] of Object.entries(examData)) {
+            if (examInfo.dates.includes(i)) {
+                examStatus = examInfo.status;
+                day.title = examName;
+                break;
+            }
+        }
+        
+        if (examStatus) day.classList.add(examStatus);
+        calendarGrid.appendChild(day);
+    }
+    
+    const totalCells = calendarGrid.children.length - 7;
+    const remainingCells = 42 - totalCells;
+    for (let i = 1; i <= remainingCells; i++) {
+        const day = document.createElement('div');
+        day.className = 'cal-day other-month';
+        day.textContent = i;
+        calendarGrid.appendChild(day);
+    }
+}
+
+function previousMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+}
+
+function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+}
+
+/* EXAM DATA & FILTERING */
+const allExams = [
+    { name: 'JEE Main', type: 'national', deadline: '2025-01-15', website: 'https://jeemain.nta.ac.in' },
+    { name: 'JEE Advanced', type: 'national', deadline: '2025-02-20', website: 'https://jeeadv.ac.in' },
+    { name: 'NEET UG', type: 'national', deadline: '2025-03-10', website: 'https://neet.nta.ac.in' },
+    { name: 'BITSAT', type: 'university', deadline: '2025-03-05', website: 'https://www.bitsadmission.com' },
+    { name: 'VITEEE', type: 'university', deadline: '2025-03-15', website: 'https://viteee.ac.in' },
+    { name: 'SRMJEEE', type: 'university', deadline: '2025-03-20', website: 'https://www.srmist.edu.in' },
+    { name: 'MET (Manipal)', type: 'university', deadline: '2025-04-20', website: 'https://manipal.edu' },
+    { name: 'IISER IAT', type: 'national', deadline: '2025-04-10', website: 'https://www.iiseradmission.in' },
+    { name: 'NEST', type: 'national', deadline: '2025-03-25', website: 'https://www.nestexam.in' },
+    { name: 'ISI Admission Test', type: 'national', deadline: '2025-02-10', website: 'https://www.isical.ac.in' },
+    { name: 'CMI Entrance Exam', type: 'university', deadline: '2025-03-31', website: 'https://www.cmi.ac.in' },
+    { name: 'UGEE (IIIT Hyderabad)', type: 'university', deadline: '2025-03-15', website: 'https://ugee.iiit.ac.in' },
+    { name: 'CUET UG', type: 'national', deadline: '2025-03-25', website: 'https://cuet.samarth.ac.in' },
+    { name: 'IPMAT', type: 'national', deadline: '2025-04-05', website: 'https://ipmat.iimindore.ac.in' },
+    { name: 'NATA', type: 'national', deadline: '2025-02-28', website: 'https://www.nata.in' },
+    { name: 'UCEED', type: 'national', deadline: '2025-10-31', website: 'https://www.uceed.iitb.ac.in' },
+    { name: 'NDA', type: 'national', deadline: '2025-01-28', website: 'https://www.upsc.gov.in' },
+    { name: 'ICAR AIEEA', type: 'national', deadline: '2025-04-15', website: 'https://icar.nta.ac.in' },
+    { name: 'AIIMS Paramedical', type: 'national', deadline: '2025-04-30', website: 'https://aiimsexams.ac.in' },
+    { name: 'CA Foundation', type: 'national', deadline: '2025-01-01', website: 'https://icai.org' },
+    { name: 'CS Executive Entrance', type: 'national', deadline: '2025-02-28', website: 'https://www.icsi.edu' },
+    { name: 'CMA Foundation', type: 'national', deadline: '2025-01-31', website: 'https://icmai.in' },
+    { name: 'NPAT (NMIMS)', type: 'university', deadline: '2025-04-25', website: 'https://www.nmims.edu' },
+    { name: 'SET (Symbiosis)', type: 'university', deadline: '2025-04-20', website: 'https://www.set-test.org' },
+    { name: 'LSAT India', type: 'university', deadline: '2025-01-20', website: 'https://discoverlaw.in' },
+    { name: 'SLAT', type: 'university', deadline: '2025-04-20', website: 'https://www.set-test.org' },
+    { name: 'NCHMCT JEE', type: 'national', deadline: '2025-03-31', website: 'https://nchmjee.nta.ac.in' },
+    { name: 'CLAT', type: 'national', deadline: '2025-05-15', website: 'https://consortiumofnlus.ac.in' },
+    { name: 'AILET', type: 'university', deadline: '2025-03-31', website: 'https://www.nlud.ac.in' },
+    { name: 'IIMC Entrance', type: 'national', deadline: '2025-03-20', website: 'https://iimc.nic.in' },
+    { name: 'NID DAT', type: 'national', deadline: '2025-10-15', website: 'https://admissions.nid.edu' },
+    { name: 'NIFT Entrance Exam', type: 'national', deadline: '2025-12-15', website: 'https://nift.ac.in' },
+    { name: 'CAT', type: 'national', deadline: '2025-09-20', website: 'https://iimcat.ac.in' },
+    { name: 'GATE', type: 'national', deadline: '2025-01-30', website: 'https://gate.iitb.ac.in' },
+    { name: 'UPSC PRELIMS', type: 'national', deadline: '2025-03-01', website: 'https://www.upsc.gov.in' },
+    { name: 'UGC NET', type: 'national', deadline: '2025-02-28', website: 'https://ugcnet.nta.ac.in' },
+    { name: 'Delhi University (CUET/CSAS)', type: 'state', deadline: '2025-06-30', website: 'https://du.ac.in' },
+    { name: 'BSc Nursing Entrance', type: 'state', deadline: '2025-05-31', website: 'https://www.aiims.edu' }
+];
+
+function renderExams(examsToShow) {
+    if (!examsToShow) examsToShow = allExams;
+    const examGrid = document.getElementById('examGrid');
+    examGrid.innerHTML = '';
+    examsToShow.forEach(exam => {
+        const card = document.createElement('div');
+        card.className = 'exam-card';
+        card.innerHTML = '<span class="exam-badge ' + exam.type + '">' + exam.type + '</span><h3 class="exam-name">' + exam.name + '</h3><div class="exam-details"><div>📅 <strong>Deadline:</strong> ' + exam.deadline + '</div></div><a href="' + exam.website + '" target="_blank" class="exam-link">Visit Official Website →</a>';
+        examGrid.appendChild(card);
+    });
+}
+
+function filterExams() {
+    const searchTerm = document.getElementById('examSearch').value.toLowerCase();
+    const typeFilter = document.getElementById('examType').value;
+    const filtered = allExams.filter(exam => {
+        const matchesSearch = exam.name.toLowerCase().includes(searchTerm);
+        const matchesType = !typeFilter || exam.type === typeFilter;
+        return matchesSearch && matchesType;
+    });
+    renderExams(filtered);
+}
+
+/* SCHOLARSHIP DATA & FILTERING */
+const allScholarships = [
+    { name: 'National Scholarship Scheme', amount: '₹12,000/year', state: 'all', website: 'https://scholarships.gov.in' },
+    { name: 'Pradhan Mantri Scholarship', amount: '₹25,000/year', state: 'all', website: 'https://pmsss.gov.in' },
+    { name: 'Merit Cum Means Scholarship', amount: '₹15,000/year', state: 'all', website: 'https://scholarships.gov.in' },
+    { name: 'Delhi Merit Scholarship', amount: '₹10,000/year', state: 'delhi', website: 'https://delsed.in' },
+    { name: 'Delhi Post-Matric Scholarship', amount: '₹18,000/year', state: 'delhi', website: 'https://delsed.in' },
+    { name: 'Maharashtra Scholarship', amount: '₹20,000/year', state: 'maharashtra', website: 'https://scholarships.maharashtra.gov.in' },
+    { name: 'Karnataka Merit Scholarship', amount: '₹16,000/year', state: 'karnataka', website: 'https://www.dss.iisc.ac.in' },
+    { name: 'Tamil Nadu Scholarship', amount: '₹12,000/year', state: 'tamilnadu', website: 'https://www.tnscholarships.gov.in' },
+    { name: 'West Bengal Scholarship', amount: '₹14,000/year', state: 'westbengal', website: 'https://wbscholarship.gov.in' },
+    { name: 'NTS Scholarship for Girls', amount: '₹30,000/year', state: 'all', website: 'https://pib.gov.in' },
+    { name: 'Poorest of Poor Scholarship', amount: '₹40,000/year', state: 'all', website: 'https://scholarships.gov.in' }
+];
+
+function renderScholarships(scholarshipsToShow) {
+    if (!scholarshipsToShow) scholarshipsToShow = allScholarships;
+    const scholarshipGrid = document.getElementById('scholarshipGrid');
+    scholarshipGrid.innerHTML = '';
+    scholarshipsToShow.forEach(scholarship => {
+        const card = document.createElement('div');
+        card.className = 'scholarship-card';
+        const stateDisplay = scholarship.state === 'all' ? 'All India' : scholarship.state.toUpperCase();
+        card.innerHTML = '<span class="scholarship-badge">National</span><h3 class="scholarship-name">' + scholarship.name + '</h3><div class="scholarship-details"><div class="scholarship-amount">💰 ' + scholarship.amount + '</div><div>📍 <strong>State:</strong> ' + stateDisplay + '</div></div><a href="' + scholarship.website + '" target="_blank" class="scholarship-link">Learn More & Apply →</a>';
+        scholarshipGrid.appendChild(card);
+    });
+}
+
+function filterScholarships() {
+    const searchTerm = document.getElementById('scholarshipSearch').value.toLowerCase();
+    const stateFilter = document.getElementById('stateFilter').value;
+    const filtered = allScholarships.filter(scholarship => {
+        const matchesSearch = scholarship.name.toLowerCase().includes(searchTerm);
+        const matchesState = !stateFilter || scholarship.state === 'all' || scholarship.state === stateFilter;
+        return matchesSearch && matchesState;
+    });
+    renderScholarships(filtered);
+}
+
+/* NOTIFICATION SYSTEM */
+function showNotification(title, message, type) {
+    if (!type) type = 'info';
+    const center = document.getElementById('notification-center');
+    const notification = document.createElement('div');
+    notification.className = 'notification ' + type;
+    const iconMap = { success: '✅', warning: '⚠️', info: 'ℹ️', exam: '📅', scholarship: '💰' };
+    const icon = iconMap[type] || iconMap['info'];
+    notification.innerHTML = '<div class="notification-icon">' + icon + '</div><div class="notification-content"><div class="notification-title">' + title + '</div><div class="notification-message">' + message + '</div></div><button class="notification-close" onclick="this.parentElement.remove()">✕</button>';
+    center.appendChild(notification);
+    setTimeout(() => { if (notification.parentElement) notification.remove(); }, 4000);
+}
+
+function scheduleReminders() {
+    showNotification('Exam Reminder', 'JEE Main application deadline is approaching!', 'exam');
+    setTimeout(() => showNotification('Scholarship Alert', 'New scholarship window opened for your state', 'scholarship'), 3000);
+    setTimeout(() => showNotification('Quick Tip', 'Complete your exam application before the deadline', 'info'), 6000);
+}
+
+/* INITIALIZATION */
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('calendarGrid')) renderCalendar();
+    if (document.getElementById('examGrid')) renderExams();
+    if (document.getElementById('scholarshipGrid')) renderScholarships();
+    setTimeout(scheduleReminders, 2000);
+});
+</script>
+</body>
+</html>
