@@ -1822,6 +1822,441 @@ footer p { font-size: 0.82rem; color: var(--text-3); }
     transform: translateX(2px);
 }
 
+/* ============ MENTOR SECTION STYLES ============ */
+.mentor-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--surface) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.mentor-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mentor-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.mentor-title {
+  font-family: var(--ff-head);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text);
+  letter-spacing: -1px;
+}
+
+.mentor-title em { color: var(--amber); font-style: italic; }
+
+.mentor-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-2);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.mentors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mentor-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+
+.mentor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber), var(--copper));
+}
+
+.mentor-card:hover {
+  border-color: var(--amber);
+  background: var(--surface2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mentor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--copper));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(135, 167, 179, 0.25);
+}
+
+.mentor-name {
+  font-family: var(--ff-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.mentor-title-role {
+  font-size: 0.95rem;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mentor-qualifications {
+  background: rgba(135, 167, 179, 0.08);
+  border-left: 3px solid var(--amber);
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.mentor-qualifications strong { color: var(--text); display: block; margin-bottom: 0.5rem; }
+
+.mentor-experience {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  margin-bottom: 1.5rem;
+}
+
+.mentor-slots {
+  background: rgba(202, 228, 219, 0.08);
+  border: 1px dashed var(--copper);
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-slots-title {
+  font-weight: 600;
+  color: var(--copper);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.mentor-slot-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.mentor-slot-item:last-child { border-bottom: none; }
+
+.slot-time { color: var(--text); font-weight: 500; }
+
+.slot-status {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.slot-available { background: rgba(135, 167, 179, 0.15); color: var(--copper); }
+
+.slot-limited { background: rgba(202, 228, 219, 0.20); color: var(--amber); }
+
+.slot-full { background: rgba(118, 97, 97, 0.15); color: var(--text-3); }
+
+.mentor-pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, rgba(202, 228, 219, 0.12), rgba(135, 167, 179, 0.08));
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.mentor-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label { font-size: 0.85rem; color: var(--text-3); text-transform: uppercase; }
+
+.price-amount {
+  font-family: var(--ff-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--copper);
+  margin-top: 0.25rem;
+}
+
+.mentor-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.btn-book-slot {
+  flex: 1;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, var(--amber), var(--amber-d));
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--ff-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  font-size: 0.95rem;
+}
+
+.btn-book-slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(135, 167, 179, 0.35);
+}
+
+.btn-book-slot:active { transform: translateY(0); }
+
+.btn-learn-more {
+  flex: 1;
+  padding: 0.9rem 1.5rem;
+  background: transparent;
+  color: var(--amber);
+  border: 2px solid var(--amber);
+  border-radius: 8px;
+  font-family: var(--ff-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  font-size: 0.95rem;
+}
+
+.btn-learn-more:hover {
+  background: rgba(135, 167, 179, 0.1);
+  box-shadow: 0 8px 24px rgba(135, 167, 179, 0.15);
+}
+
+/* Payment Gateway Modal */
+.payment-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.3s var(--ease-out);
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-modal.active { display: flex; }
+
+.payment-modal-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.35s var(--ease-spring);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.payment-title {
+  font-family: var(--ff-head);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.payment-close {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-2);
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.payment-close:hover { color: var(--text); }
+
+.payment-details {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(135, 167, 179, 0.08);
+  border-radius: 8px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.payment-row:last-child { border-bottom: none; }
+
+.payment-label { color: var(--text-2); }
+
+.payment-value { color: var(--text); font-weight: 600; }
+
+.payment-methods {
+  margin-bottom: 2rem;
+}
+
+.payment-methods-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.payment-method-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-method-btn:hover {
+  border-color: var(--amber);
+  background: rgba(135, 167, 179, 0.08);
+}
+
+.payment-method-btn.active {
+  border-color: var(--copper);
+  background: rgba(202, 228, 219, 0.12);
+}
+
+.payment-method-icon { font-size: 1.5rem; }
+
+.payment-method-details { text-align: left; flex: 1; }
+
+.payment-method-name { font-weight: 600; }
+
+.payment-method-desc { font-size: 0.8rem; color: var(--text-2); }
+
+.btn-pay-now {
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, var(--copper), var(--copper-d));
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--ff-body);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s var(--ease-out);
+  margin-bottom: 1rem;
+}
+
+.btn-pay-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(202, 228, 219, 0.4);
+}
+
+.btn-pay-cancel {
+  width: 100%;
+  padding: 1.1rem;
+  background: transparent;
+  color: var(--text-2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--ff-body);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-pay-cancel:hover {
+  border-color: var(--text-2);
+  color: var(--text);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .mentor-title { font-size: 2.5rem; }
+  .mentor-card { padding: 1.75rem; }
+  .mentors-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .mentor-actions { flex-direction: column; }
+  .btn-book-slot, .btn-learn-more { flex: none; }
+  .payment-modal-content { width: 95%; padding: 1.5rem; }
+}
+
 /* ===== NOTIFICATION STYLES ===== */
 .notification-center {
     position: fixed;
@@ -2935,6 +3370,82 @@ footer p { font-size: 0.82rem; color: var(--text-3); }
     </div>
 </section>
 
+<!-- MENTOR SECTION -->
+<section class="mentor-section" id="mentors">
+    <div class="mentor-header">
+        <h2 class="mentor-title">One-on-One <em>Mentorship</em></h2>
+        <p class="mentor-subtitle">Get personalized guidance from experienced mentors. Book your slots today and accelerate your college preparation journey.</p>
+    </div>
+    
+    <div class="mentors-grid" id="mentorsGrid">
+        <!-- Mentors will be rendered here by JavaScript -->
+    </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div class="payment-modal" id="paymentModal">
+    <div class="payment-modal-content">
+        <div class="payment-header">
+            <h2 class="payment-title">Book Your Session</h2>
+            <button class="payment-close" onclick="closePaymentModal()">✕</button>
+        </div>
+        
+        <div class="payment-details">
+            <div class="payment-row">
+                <span class="payment-label">Mentor</span>
+                <span class="payment-value" id="paymentMentor">-</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">Session Duration</span>
+                <span class="payment-value">60 minutes</span>
+            </div>
+            <div class="payment-row">
+                <span class="payment-label">Amount</span>
+                <span class="payment-value" id="paymentAmount">-</span>
+            </div>
+        </div>
+        
+        <div class="payment-methods">
+            <div class="payment-methods-title">Choose Payment Method</div>
+            
+            <button class="payment-method-btn active" onclick="selectPaymentMethod(this, 'card')">
+                <span class="payment-method-icon">💳</span>
+                <div class="payment-method-details">
+                    <div class="payment-method-name">Credit/Debit Card</div>
+                    <div class="payment-method-desc">Visa, MasterCard, RuPay</div>
+                </div>
+            </button>
+            
+            <button class="payment-method-btn" onclick="selectPaymentMethod(this, 'upi')">
+                <span class="payment-method-icon">📱</span>
+                <div class="payment-method-details">
+                    <div class="payment-method-name">UPI</div>
+                    <div class="payment-method-desc">Google Pay, PhonePe, Paytm</div>
+                </div>
+            </button>
+            
+            <button class="payment-method-btn" onclick="selectPaymentMethod(this, 'netbanking')">
+                <span class="payment-method-icon">🏦</span>
+                <div class="payment-method-details">
+                    <div class="payment-method-name">Net Banking</div>
+                    <div class="payment-method-desc">All major Indian banks</div>
+                </div>
+            </button>
+            
+            <button class="payment-method-btn" onclick="selectPaymentMethod(this, 'wallet')">
+                <span class="payment-method-icon">💰</span>
+                <div class="payment-method-details">
+                    <div class="payment-method-name">Digital Wallet</div>
+                    <div class="payment-method-desc">Paytm, MobiKwik, Freecharge</div>
+                </div>
+            </button>
+        </div>
+        
+        <button class="btn-pay-now" onclick="processPayment()">Proceed to Payment</button>
+        <button class="btn-pay-cancel" onclick="closePaymentModal()">Cancel</button>
+    </div>
+</div>
+
 <section id="cta">
   <div class="section-content" style="text-align:center;">
     <div class="cta-box reveal">
@@ -2979,7 +3490,7 @@ footer p { font-size: 0.82rem; color: var(--text-3); }
 /* ================================================================
    API KEY
    ================================================================ */
-const GROQ_KEY = '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';
+const GROQ_KEY = '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';
 
 /* ================================================================
    PAGE TRANSITION
@@ -3669,6 +4180,186 @@ function filterScholarships() {
     renderScholarships(filtered);
 }
 
+/* MENTOR DATA & RENDERING */
+const allMentors = [
+    {
+        id: 1,
+        name: 'Dr. Rajesh Patel',
+        role: 'Tuition Teacher & IIT-JEE Expert',
+        avatar: '👨‍🏫',
+        qualifications: 'B.Tech IIT-Delhi, M.Phil (Physics), 22+ years of teaching experience. Mentored 5000+ students for JEE & NEET.',
+        experience: '22 years guiding students to top colleges',
+        slots: [
+            { time: 'Mon-Wed 6:00 PM', status: 'available' },
+            { time: 'Thu-Fri 7:00 PM', status: 'available' },
+            { time: 'Sat 10:00 AM', status: 'limited' },
+            { time: 'Sun 2:00 PM', status: 'full' }
+        ],
+        price: '₹149/session'
+    },
+    {
+        id: 2,
+        name: 'Prof. Neha Sharma',
+        role: 'NEET Preparation Specialist',
+        avatar: '👩‍⚕️',
+        qualifications: 'MBBS from AIIMS Delhi, 18 years of medical education expertise. Guided 3500+ students to medical colleges.',
+        experience: '18 years specializing in medical entrance exams',
+        slots: [
+            { time: 'Mon-Tue 5:00 PM', status: 'available' },
+            { time: 'Wed-Thu 6:30 PM', status: 'available' },
+            { time: 'Sat 11:00 AM', status: 'limited' },
+            { time: 'Sun 3:00 PM', status: 'available' }
+        ],
+        price: '₹129/session'
+    },
+    {
+        id: 3,
+        name: 'Arun Verma',
+        role: 'Engineering Entrance Counselor',
+        avatar: '👨‍💼',
+        qualifications: 'IIT-BHU Alumni, 20+ years in educational consulting. Expert in BITSAT, VITEEE & university admissions.',
+        experience: '20 years helping students choose right engineering colleges',
+        slots: [
+            { time: 'Tue-Wed 7:00 PM', status: 'available' },
+            { time: 'Thu-Fri 6:00 PM', status: 'limited' },
+            { time: 'Sat 2:00 PM', status: 'available' },
+            { time: 'Sun 4:00 PM', status: 'full' }
+        ],
+        price: '₹119/session'
+    },
+    {
+        id: 4,
+        name: 'Ms. Priya Desai',
+        role: 'Commerce & Law Entrance Expert',
+        avatar: '👩‍⚖️',
+        qualifications: 'LLB from Delhi University, CA in progress, 16 years guiding students in CLAT, IPU & commerce streams.',
+        experience: '16 years advising commerce and law aspirants',
+        slots: [
+            { time: 'Mon 6:30 PM', status: 'available' },
+            { time: 'Wed-Fri 5:30 PM', status: 'available' },
+            { time: 'Sat 3:00 PM', status: 'limited' },
+            { time: 'Sun 5:00 PM', status: 'available' }
+        ],
+        price: '₹99/session'
+    },
+    {
+        id: 5,
+        name: 'Dr. Vikram Singh',
+        role: 'Science Stream & Research Guide',
+        avatar: '👨‍🔬',
+        qualifications: 'PhD in Chemistry from Delhi University, 19 years teaching advanced science. Authored multiple educational books.',
+        experience: '19 years providing science mentorship and guidance',
+        slots: [
+            { time: 'Tue 7:30 PM', status: 'available' },
+            { time: 'Thu 6:30 PM', status: 'available' },
+            { time: 'Sat 9:00 AM', status: 'available' },
+            { time: 'Sun 6:00 PM', status: 'limited' }
+        ],
+        price: '₹139/session'
+    },
+    {
+        id: 6,
+        name: 'Meera Gupta',
+        role: 'Career Counselor & Life Skills Coach',
+        avatar: '👩‍💼',
+        qualifications: 'M.Com, Certified Life Coach, 15 years helping students with career planning and personality development.',
+        experience: '15 years guiding students in career planning',
+        slots: [
+            { time: 'Mon 5:00 PM', status: 'available' },
+            { time: 'Wed-Thu 7:00 PM', status: 'available' },
+            { time: 'Sat 4:00 PM', status: 'available' },
+            { time: 'Sun 2:00 PM', status: 'limited' }
+        ],
+        price: '₹79/session'
+    }
+];
+
+function renderMentors(mentorsToShow) {
+    if (!mentorsToShow) mentorsToShow = allMentors;
+    const mentorGrid = document.getElementById('mentorsGrid');
+    mentorGrid.innerHTML = '';
+    
+    mentorsToShow.forEach(mentor => {
+        const card = document.createElement('div');
+        card.className = 'mentor-card';
+        
+        let slotsHTML = '<div class="mentor-slots"><div class="mentor-slots-title">📅 Available Slots</div>';
+        mentor.slots.forEach(slot => {
+            slotsHTML += `
+                <div class="mentor-slot-item">
+                    <span class="slot-time">${slot.time}</span>
+                    <span class="slot-status slot-${slot.status}">${slot.status.charAt(0).toUpperCase() + slot.status.slice(1)}</span>
+                </div>
+            `;
+        });
+        slotsHTML += '</div>';
+        
+        card.innerHTML = `
+            <div class="mentor-avatar">${mentor.avatar}</div>
+            <h3 class="mentor-name">${mentor.name}</h3>
+            <div class="mentor-title-role">${mentor.role}</div>
+            <div class="mentor-qualifications">
+                <strong>Qualifications & Experience:</strong>
+                ${mentor.qualifications}
+            </div>
+            <div class="mentor-experience">
+                ⭐ ${mentor.experience}
+            </div>
+            ${slotsHTML}
+            <div class="mentor-pricing">
+                <div class="mentor-price">
+                    <span class="price-label">Price per Session</span>
+                    <span class="price-amount">${mentor.price}</span>
+                </div>
+            </div>
+            <div class="mentor-actions">
+                <button class="btn-book-slot" onclick="openPaymentModal(${mentor.id}, '${mentor.name}', '${mentor.price.split('/')[0]}')">
+                    🎯 Book Slot
+                </button>
+                <button class="btn-learn-more" onclick="showNotification('Coming Soon', 'Mentor profile details will be available soon!', 'info')">
+                    Learn More
+                </button>
+            </div>
+        `;
+        
+        mentorGrid.appendChild(card);
+    });
+}
+
+/* PAYMENT GATEWAY FUNCTIONS */
+let currentPaymentData = { mentorId: null, mentorName: '', amount: '' };
+
+function openPaymentModal(mentorId, mentorName, price) {
+    currentPaymentData = { mentorId, mentorName, amount: price };
+    document.getElementById('paymentMentor').textContent = mentorName;
+    document.getElementById('paymentAmount').textContent = price;
+    document.getElementById('paymentModal').classList.add('active');
+    showNotification('Booking Initiated', `You're about to book a session with ${mentorName}`, 'info');
+}
+
+function closePaymentModal() {
+    document.getElementById('paymentModal').classList.remove('active');
+    document.querySelectorAll('.payment-method-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.payment-method-btn')[0].classList.add('active');
+}
+
+function selectPaymentMethod(element, method) {
+    document.querySelectorAll('.payment-method-btn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+}
+
+function processPayment() {
+    const selectedMethod = document.querySelector('.payment-method-btn.active');
+    const methodText = selectedMethod.querySelector('.payment-method-name').textContent;
+    
+    closePaymentModal();
+    showNotification(
+        '✅ Booking Confirmed!',
+        `Your session with ${currentPaymentData.mentorName} has been booked via ${methodText}. A confirmation email will be sent shortly.`,
+        'success'
+    );
+}
+
 /* NOTIFICATION SYSTEM */
 function showNotification(title, message, type) {
     if (!type) type = 'info';
@@ -3693,6 +4384,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('calendarGrid')) renderCalendar();
     if (document.getElementById('examGrid')) renderExams();
     if (document.getElementById('scholarshipGrid')) renderScholarships();
+    if (document.getElementById('mentorsGrid')) renderMentors();
     setTimeout(scheduleReminders, 2000);
 });
 </script>
